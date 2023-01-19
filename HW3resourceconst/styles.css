@@ -57,9 +57,9 @@ a {
   margin-right: 24px;
 }
 
-nav a:hover {
+/* nav a:hover {
   color:black;
-}
+} Professor has mentioned to disregard hover behaviour. Changed only after seeing the piazza post*/ 
 
 #navigation nav a:hover,
 body.final a.final,
