@@ -367,7 +367,7 @@ function seatMap(eventID) {
   if (document.getElementById("middle")) {
     document.getElementById("middle").innerHTML = "";
   }
-  var eventURL = "http://localhost:5000/event?";
+  var eventURL = "https://trojansrock.wl.r.appspot.com/event?";
   eventURL = eventURL + "eventID=" + eventID;
   var dataToServer = fetch(eventURL);
   dataToServer
@@ -536,7 +536,7 @@ function venueDetails(venueName) {
   }
 
   console.log("data in showVenue", venueName);
-  var venueURL = "http://localhost:5000/venue?venueName=" + venueName;
+  var venueURL = "https://trojansrock.wl.r.appspot.com/venue?venueName=" + venueName;
   var dataToServer = fetch(venueURL);
   dataToServer
     .then((response) => response.json())
