@@ -5,33 +5,609 @@
 // Most of the work is done by our script
 
 //Initializing the values to be used
+///////////////////////////////////
+var userKeyword;
+var userDistance;
+var userCategory;
+var userLocation;
+var locationChecked;
+var segmentID;
+var finalLatitude;
+var finalLongitude;
+const defaultDistance = 10;
 
-let userKeyword;
-let userDistance;
-let userCategory;
-let userLocation;
-let userLatitude;
-let userLongitude;
-var googleMapsURL = "https://maps.googleapis.com/maps/api/geocode/json?";
-var ipinfoURL = "https://ipinfo.io?token=32b42d235a510b";
-function getCoordinatesIP() {
-  ipOutput = fetch(ipinfoURL)
-  .then(response => response.json())
-  .then(data => console.log(data))
+/////////////////////////////////////////
+
+function clearDynamicData() {
+  if (document.getElementById("nothing").classList.contains("nothing")) {
+    document.getElementById("nothing").classList.remove("nothing");
+  }
+  if (document.contains(document.getElementById("results"))) {
+    document.getElementById("results").innerHTML = "";
+  }
+  if (document.contains(document.getElementById("headings"))) {
+    document.getElementById("headings").innerHTML = "";
+  }
+  if (document.contains(document.getElementById("nothing"))) {
+    document.getElementById("nothing").innerHTML = "";
+  }
+  if (
+    document.getElementById("container-3").classList.contains("container-3")
+  ) {
+    document.getElementById("container-3").classList.remove("container-3");
+  }
+  if (document.getElementById("helperFor").classList.contains("helperFor")) {
+    document.getElementById("helperFor").classList.remove("helperFor");
+  }
+
+  if (document.contains(document.getElementById("concertDetails"))) {
+    document.getElementById("concertDetails").innerHTML = "";
+  }
+  if (document.contains(document.getElementById("seatLayout"))) {
+    document.getElementById("seatLayout").innerHTML = "";
+  }
+  if (document.contains(document.getElementById("nameOfConcert"))) {
+    document.getElementById("nameOfConcert").innerHTML = "";
+  }
+  if (document.contains(document.getElementById("showVenueButton"))) {
+    document.getElementById("showVenueButton").innerHTML = "";
+  }
+  if (document.contains(document.getElementById("top"))) {
+    document.getElementById("top").innerHTML = "";
+  }
+  if (document.contains(document.getElementById("left"))) {
+    document.getElementById("left").innerHTML = "";
+  }
+  if (document.contains(document.getElementById("right"))) {
+    document.getElementById("right").innerHTML = "";
+  }
+  if (
+    document.getElementById("container-4").classList.contains("container-4")
+  ) {
+    document.getElementById("container-4").classList.remove("container-4");
+  }
+  if (
+    document.getElementById("verticalLine").classList.contains("verticalLine")
+  ) {
+    document.getElementById("verticalLine").classList.remove("verticalLine");
+  }
+  if (
+    document.getElementById("wrapperBorder").classList.contains("wrapperBorder")
+  ) {
+    document.getElementById("wrapperBorder").classList.remove("wrapperBorder");
+  }
+  if (document.getElementById("middle")) {
+    document.getElementById("middle").innerHTML = "";
+  }
 }
 
-//Gets triggered on submitting the form
-//We set the values of the user in this function
 function trigger() {
-  getCoordinatesIP();
+  clearDynamicData();
+
+  var googleMapsURL =
+    "https://maps.googleapis.com/maps/api/geocode/json?address=";
+  var ipinfoURL = "https://ipinfo.io?token=32b42d235a510b";
+
   userKeyword = document.getElementById("keyword").value;
-  userDistance = document.getElementById("distance").value;
+
   userCategory = document.getElementById("category").value;
-  if (!document.getElementById("auto-detect").checked) {
-    getCoordinatesMaps(document.getElementById("location").value);
-  } else {
-    getCoordinatesIP();
+  userDistance = document.getElementById("distance").value;
+  locationChecked = document.getElementById("auto-detect").checked;
+  userLocation = document.getElementById("location").value;
+  if (userKeyword != "" && (locationChecked || userLocation != "")) {
+    if (!userDistance) {
+      userDistance = defaultDistance;
+    }
+    if (userCategory == "music") {
+      segmentID = "KZFzniwnSyZfZ7v7nJ";
+    }
+    if (userCategory == "sports") {
+      segmentID = "KZFzniwnSyZfZ7v7nE";
+    }
+    if (userCategory == "artsandtheatre") {
+      segmentID = "KZFzniwnSyZfZ7v7na";
+    }
+    if (userCategory == "film") {
+      segmentID = "KZFzniwnSyZfZ7v7nn";
+    }
+    if (userCategory == "miscellaneous") {
+      segmentID = "KZFzniwnSyZfZ7v7n1";
+    }
+    if (userCategory == "default") {
+      segmentID = "";
+    }
+    console.log(
+      "User-values",
+      userKeyword,
+      userCategory,
+      userDistance,
+      "locationCheck->",
+      locationChecked,
+      location,
+      segmentID
+    );
+    var fetchIP = fetch(ipinfoURL);
+    fetchIP
+      .then((res) => res.json())
+      .then(function (response) {
+        console.log("IPAPiResponse", response);
+        console.log("-------------");
+        var loc = response.loc.split(",");
+        var userLatitudeIP = loc[0];
+        var userLongitudeIP = loc[1];
+        console.log("Lattitudes based on IP", userLatitudeIP, userLongitudeIP);
+        if (locationChecked) {
+          callServer(userLatitudeIP, userLongitudeIP);
+        }
+      });
+
+    if (!locationChecked) {
+      googleMapsURL =
+        googleMapsURL +
+        userLocation +
+        "&key=AIzaSyAwWx8kdZRnHtyfARa1W8xMCSltVp8m-_k";
+      var fetchCoordinates = fetch(googleMapsURL);
+      fetchCoordinates
+        .then((response) => response.json())
+        .then(function (theData) {
+          console.log("GoogleMaps ", theData);
+          console.log("-------------");
+          if (theData.results.length > 0) {
+            var latData = theData.results[0].geometry.location.lat;
+            var longData = theData.results[0].geometry.location.lng;
+            console.log("Latitudes of Google Maps", latData, longData);
+            callServer(latData, longData);
+          } else {
+            document.getElementById("nothing").classList.add("nothing");
+            var noOutput = document.getElementById("nothing");
+            noOutput.innerHTML = "<h3>No Records found</h3>";
+          }
+        });
+    }
   }
+}
+
+function callServer(lat, long) {
+  console.log("lat to server function is", lat);
+  console.log("long to server function is", long);
+  // https://myfirstpython-94534.us-west2.r.appspot.com/
+  // var serverURL = "http://localhost:5000/display?";
+  var serverURL = "https://trojansrock.us-west2.r.appspot.com/display?";
+  finalLatitude = lat;
+  finalLongitude = long;
+  serverURL =
+    serverURL +
+    "keyword=" +
+    userKeyword +
+    "&category=" +
+    segmentID +
+    "&distance=" +
+    userDistance +
+    "&latitude=" +
+    finalLatitude +
+    "&longitude=" +
+    finalLongitude;
+  console.log("testing URL to server", serverURL);
+
+  var dataToServer = fetch(serverURL);
+  dataToServer
+    .then((response) => response.json())
+    .then(function (finalData) {
+      console.log("Server Response");
+      console.log(finalData);
+
+      console.log("number of results", finalData["result"]);
+      if (finalData["result"].length > 0) {
+        if (document.getElementById("nothing").classList.contains("nothing")) {
+          document.getElementById("nothing").classList.remove("nothing");
+        }
+        var finalResults = finalData["result"];
+        var headingRow = document.createElement("tr");
+        headingRow.innerHTML =
+          "<th>Date</th><th>Icon</th><th onclick='" +
+          "sortTable(2)" +
+          "'>Event</th><th onclick='" +
+          "sortTable(3)" +
+          "'>Genre</th><th onclick='" +
+          "sortTable(4)" +
+          "'>Venue</th>";
+        document.getElementById("headings").appendChild(headingRow);
+        for (var i = 0; i < finalResults.length; i++) {
+          var nameOfTheEvent = finalResults[i]["name"];
+          var imageURL = finalResults[i]["imageURL"];
+          var localDate = finalResults[i]["localDate"];
+          var localTime = finalResults[i]["localTime"];
+          var genre = finalResults[i]["genre"];
+          var venueName = finalResults[i]["venueName"];
+          var idOfEvent = finalResults[i]["id"];
+          var tempRow = document.createElement("tr");
+          var tempRowData =
+            "<td id='date'>" + localDate + "<br>" + localTime + "</td>";
+          tempRowData +=
+            "<td id='logo'><img id='logoImg' src=" + imageURL + "></td>";
+          tempRowData +=
+            "<td id='event' class='selectable' onClick=seatMap('" +
+            idOfEvent +
+            "')>" +
+            nameOfTheEvent +
+            "</td>";
+          tempRowData += "<td id='genre'>" + genre + "</td>";
+          tempRowData += "<td id='venue'>" + venueName + "</td>";
+          tempRow.innerHTML = tempRowData;
+          document.getElementById("results").appendChild(tempRow);
+        }
+      } else {
+        document.getElementById("nothing").classList.add("nothing");
+        var noOutput = document.getElementById("nothing");
+        noOutput.innerHTML = "<h3>No Records found</h3>";
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
+//this table has been used from https://codepen.io/andrese52/pen/ZJENqp
+
+function sortTable(n) {
+  var table,
+    rows,
+    switching,
+    i,
+    x,
+    y,
+    shouldSwitch,
+    dir,
+    switchcount = 0;
+  table = document.getElementById("theTable");
+  switching = true;
+  //Set the sorting direction to ascending:
+  dir = "asc";
+  /*Make a loop that will continue until
+  no switching has been done:*/
+  while (switching) {
+    //start by saying: no switching is done:
+    switching = false;
+    rows = table.getElementsByTagName("TR");
+    /*Loop through all table rows (except the
+    first, which contains table headers):*/
+    for (i = 1; i < rows.length - 1; i++) {
+      //Change i=0 if you have the header th a separate table.
+      //start by saying there should be no switching:
+      shouldSwitch = false;
+      /*Get the two elements you want to compare,
+      one from current row and one from the next:*/
+      x = rows[i].getElementsByTagName("TD")[n];
+      y = rows[i + 1].getElementsByTagName("TD")[n];
+      console.log("xxx", x.text);
+      /*check if the two rows should switch place,
+      based on the direction, asc or desc:*/
+      if (dir == "asc") {
+        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+          //if so, mark as a switch and break the loop:
+          shouldSwitch = true;
+          break;
+        }
+      } else if (dir == "desc") {
+        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+          //if so, mark as a switch and break the loop:
+          shouldSwitch = true;
+          break;
+        }
+      }
+    }
+    if (shouldSwitch) {
+      /*If a switch has been marked, make the switch
+      and mark that a switch has been done:*/
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+      //Each time a switch is done, increase this count by 1:
+      switchcount++;
+    } else {
+      /*If no switching has been done AND the direction is "asc",
+      set the direction to "desc" and run the while loop again.*/
+      if (switchcount == 0 && dir == "asc") {
+        dir = "desc";
+        switching = true;
+      }
+    }
+  }
+}
+
+function seatMap(eventID) {
+  if (document.contains(document.getElementById("nothing"))) {
+    document.getElementById("nothing").innerHTML = "";
+  }
+  if (
+    document.getElementById("container-3").classList.contains("container-3")
+  ) {
+    document.getElementById("container-3").classList.remove("container-3");
+  }
+  if (document.getElementById("helperFor").classList.contains("helperFor")) {
+    document.getElementById("helperFor").classList.remove("helperFor");
+  }
+
+  if (document.contains(document.getElementById("concertDetails"))) {
+    document.getElementById("concertDetails").innerHTML = "";
+  }
+  if (document.contains(document.getElementById("seatLayout"))) {
+    document.getElementById("seatLayout").innerHTML = "";
+  }
+  if (document.contains(document.getElementById("nameOfConcert"))) {
+    document.getElementById("nameOfConcert").innerHTML = "";
+  }
+  if (document.contains(document.getElementById("showVenueButton"))) {
+    document.getElementById("showVenueButton").innerHTML = "";
+  }
+  if (document.contains(document.getElementById("top"))) {
+    document.getElementById("top").innerHTML = "";
+  }
+  if (document.contains(document.getElementById("left"))) {
+    document.getElementById("left").innerHTML = "";
+  }
+  if (document.contains(document.getElementById("right"))) {
+    document.getElementById("right").innerHTML = "";
+  }
+  if (
+    document.getElementById("container-4").classList.contains("container-4")
+  ) {
+    document.getElementById("container-4").classList.remove("container-4");
+  }
+  if (
+    document.getElementById("verticalLine").classList.contains("verticalLine")
+  ) {
+    document.getElementById("verticalLine").classList.remove("verticalLine");
+  }
+  if (
+    document.getElementById("wrapperBorder").classList.contains("wrapperBorder")
+  ) {
+    document.getElementById("wrapperBorder").classList.remove("wrapperBorder");
+  }
+
+  if (document.getElementById("middle")) {
+    document.getElementById("middle").innerHTML = "";
+  }
+  var eventURL = "http://localhost:5000/event?";
+  eventURL = eventURL + "eventID=" + eventID;
+  var dataToServer = fetch(eventURL);
+  dataToServer
+    .then((response) => response.json())
+    .then(function (finalData) {
+      console.log("Server Response");
+      console.log(finalData);
+      console.log("number of results", finalData["result_event"].length);
+      if (finalData["result_event"].length > 0) {
+        // var color;
+        // if(finalResults[0]["nameOfEvent"] == "onsale" )
+        // {
+        //   color="green";
+        // }
+        var finalResults = finalData["result_event"];
+        document.getElementById("container-3").classList.add("container-3");
+        document.getElementById("helperFor").classList.add("helperFor");
+
+        var leftData = document.getElementById("concertDetails");
+        var rightData = document.getElementById("seatLayout");
+        var openDiv = "<div>";
+        var closeDiv = "</div>";
+        var leftHTML =
+          openDiv +
+          "<h3>Date</h3>" +
+          "<p>" +
+          finalResults[0]["localDate"] +
+          " " +
+          finalResults[0]["localTime"] +
+          "</p>" +
+          closeDiv; //Date field
+        leftHTML += openDiv + "<h3>Artist/Team</h3>";
+        leftHTML +=
+          "<a id='artistLink' target='_blank' href='" +
+          finalResults[0]["upcomingEventsLink"] +
+          "'>" +
+          finalResults[0]["nameOfEvent"] +
+          "</a>" +
+          closeDiv;
+        leftHTML += openDiv + "<h3>Venue</h3>";
+        leftHTML += "<p>" + finalResults[0]["venueName"] + "</p>" + closeDiv;
+        leftHTML += openDiv + "<h3>Genres</h3>";
+
+        leftHTML += "<p>";
+        if (finalResults[0]["segment"]) {
+          leftHTML += finalResults[0]["segment"];
+        }
+        if (finalResults[0]["genre"]) {
+          leftHTML += " | " + finalResults[0]["genre"];
+        }
+        if (finalResults[0]["subGenre"]) {
+          leftHTML += " | " + finalResults[0]["subGenre"];
+        }
+        if (finalResults[0]["type"]) {
+          leftHTML += " | " + finalResults[0]["type"];
+        }
+        if (finalResults[0]["subType"]) {
+          leftHTML += " | " + finalResults[0]["subType"];
+        }
+        leftHTML += "</p>" + closeDiv;
+
+        if (finalResults[0]["minPrice"] || finalResults[0]["maxPrice"]) {
+          leftHTML += openDiv + "<h3>Price Ranges</h3>";
+          leftHTML += "<p>";
+          if (finalResults[0]["minPrice"]) {
+            leftHTML += finalResults[0]["minPrice"];
+          }
+          if (finalResults[0]["maxPrice"]) {
+            leftHTML += " - " + finalResults[0]["maxPrice"];
+          }
+          leftHTML += " USD</p>" + closeDiv;
+        }
+        var color = "orange";
+        var status;
+        if (finalResults[0]["ticketStatus"] == "onsale") {
+          color = "green";
+          status = "On Sale";
+        }
+        if (finalResults[0]["ticketStatus"] == "offsale") {
+          color = "red";
+          status = "Off Sale";
+        }
+        if (finalResults[0]["ticketStatus"] == "cancelled") {
+          color = "black";
+          status = "Cancelled";
+        }
+        if (finalResults[0]["ticketStatus"] == "postponed") {
+          color = "orange";
+          status = "Postponed";
+        }
+        if (finalResults[0]["ticketStatus"] == "rescheduled") {
+          color = "orange";
+          status = "Rescheduled";
+        }
+
+        leftHTML += openDiv + "<h3>Ticket Status</h3>";
+        leftHTML += "<p id='" + color + "'>" + status + "</p>" + closeDiv;
+        leftHTML += openDiv + "<h3>Buy Ticket At:</h3>";
+        leftHTML +=
+          "<a id='bookingLink' target='_blank' href=' " +
+          finalResults[0]["bookingURL"] +
+          "'>Ticketmaster</a>" +
+          closeDiv;
+        leftData.innerHTML = leftHTML;
+        console.log("concertDetails HTML", leftHTML);
+
+        if (finalResults[0]["seatmapUrl"]) {
+          rightHTML =
+            "<img id='seatmap' src=" + finalResults[0]["seatmapUrl"] + ">";
+          rightData.innerHTML = rightHTML;
+        }
+
+        headerHTML = "<h2>" + finalResults[0]["fullName"] + "</h2>";
+        document.getElementById("nameOfConcert").innerHTML = headerHTML;
+        var name = finalResults[0]["venueName"];
+
+        var venueHTML =
+          "<button>Show Venue Details</button>" +
+          "<div style='cursor: pointer;' onclick=\"venueDetails('" +
+          name +
+          "')\" id='#arrowHead'>&nbsp;" +
+          closeDiv;
+        console.log("showVenueHTML=", venueHTML);
+        document.getElementById("showVenueButton").innerHTML = venueHTML;
+        // scroll functionality
+        const scrollingElement = document.scrollingElement || document.body;
+        scrollingElement.scrollTop = scrollingElement.scrollHeight;
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
+function venueDetails(venueName) {
+  if (document.contains(document.getElementById("top"))) {
+    document.getElementById("top").innerHTML = "";
+  }
+  if (document.contains(document.getElementById("left"))) {
+    document.getElementById("left").innerHTML = "";
+  }
+  if (document.contains(document.getElementById("right"))) {
+    document.getElementById("right").innerHTML = "";
+  }
+  if (
+    document.getElementById("container-4").classList.contains("container-4")
+  ) {
+    document.getElementById("container-4").classList.remove("container-4");
+  }
+  if (
+    document.getElementById("verticalLine").classList.contains("verticalLine")
+  ) {
+    document.getElementById("verticalLine").classList.remove("verticalLine");
+  }
+  if (
+    document.getElementById("wrapperBorder").classList.contains("wrapperBorder")
+  ) {
+    document.getElementById("wrapperBorder").classList.remove("wrapperBorder");
+  }
+
+  if (document.contains(document.getElementById("showVenueButton"))) {
+    document.getElementById("showVenueButton").innerHTML = "";
+  }
+  if (document.getElementById("middle")) {
+    document.getElementById("middle").innerHTML = "";
+  }
+
+  console.log("data in showVenue", venueName);
+  var venueURL = "http://localhost:5000/venue?venueName=" + venueName;
+  var dataToServer = fetch(venueURL);
+  dataToServer
+    .then((response) => response.json())
+    .then(function (finalData) {
+      console.log("Server Response");
+      console.log(finalData);
+      console.log("number of results ooo", finalData["result_event"].length);
+      var finalResults = finalData["result_event"][0];
+      var openDiv = "<div>";
+      var closeDiv = "</div>";
+      var space =
+        "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+      document.getElementById("container-4").classList.add("container-4");
+      document.getElementById("verticalLine").classList.add("verticalLine");
+      document.getElementById("wrapperBorder").classList.add("wrapperBorder");
+
+      topHTML =
+        openDiv +
+        "<h2>&nbsp;&nbsp;" +
+        finalResults["name"] +
+        "&nbsp;&nbsp;</h2><hr>" +
+        closeDiv;
+      document.getElementById("top").innerHTML = topHTML;
+
+      leftHTML =
+        openDiv +
+        "<p><strong>Address: </strong>" +
+        finalResults["address"] +
+        "<br>" +
+        space +
+        finalResults["city"] +
+        ", " +
+        finalResults["stateCode"] +
+        "<br>" +
+        space +
+        finalResults["postalCode"] +
+        "</p>" +
+        closeDiv;
+      leftHTML +=
+        openDiv +
+        "<a id='googleMaps' target='_blank' href='https://www.google.com/maps/search/?api=1&query=" +
+        finalResults["name"] +
+        "'>Open in Google Maps</a>" +
+        closeDiv;
+      document.getElementById("left").innerHTML = leftHTML;
+
+      middleHTML = "<img id='venueLOGO' src=" + finalResults["venueLOGO"] + ">";
+      document.getElementById("middle").innerHTML = middleHTML;
+
+      rightHTML =
+        "<a id='upcomingEvent' target='_blank' href='" +
+        finalResults["upcomingEvents"] +
+        "'>More events at this venue</a>";
+      document.getElementById("right").innerHTML = rightHTML;
+      const scrollingElement = document.scrollingElement || document.body;
+      scrollingElement.scrollTop = scrollingElement.scrollHeight;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
+function clearAll() {
+  clearDynamicData();
+  document.getElementById("keyword").value = "";
+  document.getElementById("distance").value = "";
+  document.getElementById("category").value = "default";
+  document.getElementById("auto-detect").checked = false;
+  document.getElementById("location").value = "";
+  document.getElementById("location").style.display = "block";
+  myFunction();
 }
 
 function myFunction() {
@@ -43,30 +619,7 @@ function myFunction() {
     text.removeAttribute("required");
   } else {
     text.style.display = "block";
-    text.setAttribute("required");
+
+    text.setAttribute("required", "");
   }
-}
-
-window.addEventListener("load", (event) => {
-  console.log("page is fully loaded");
-  
- getCoordinatesIP();
-});
-
-function getCoordinatesMaps() {}
-
-
-function trigger() {
-  // let formData = new FormData(document.getElementById("main-form"))
-  keyword = document.getElementById("keyword");
-  alert(keyword);
-  
-  fetch("https://firsttry4098.uw.r.appspot.com/display?keyword=" + keyword)
-  .then(response => response.text())
-  .then(data => console.log(data))
-  .catch(error => console.log(error))
-
-  //   .then(response => response.text())
-  //   .then(data => console.log(data))
-  //   .catch(error => console.log(error))
 }
