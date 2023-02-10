@@ -172,7 +172,7 @@ function callServer(lat, long) {
   console.log("long to server function is", long);
   // https://myfirstpython-94534.us-west2.r.appspot.com/
   // var serverURL = "http://localhost:5000/display?";
-  var serverURL = "https://trojansrock.us-west2.r.appspot.com/display?";
+  var serverURL = "https://trojansrock.wl.r.appspot.com/display?";
   finalLatitude = lat;
   finalLongitude = long;
   serverURL =
