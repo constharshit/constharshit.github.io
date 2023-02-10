@@ -5,59 +5,114 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="index.css" />
-    <script src="index.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="static/index.css" type="text/css" />
+    <link rel="icon" href="data:;base64,=" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+Ahom&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+Ahom&family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <script src="static/index.js" type="text/javascript"></script>
   </head>
   <body>
-    <div class="container-1">
-      <div class="sub-container1">
-        <h1>Events Search</h1>
-      </div>
+    <div id="wrapContent">
+      <div id="wrapContainer1">
+        <div id="container-1">
+          <div id="sub-container1">
+            <p id="mainHeading">Events Search</p>
+          </div>
+          <div id="line"><hr /></div>
 
-      <form class="sub-container2" id="main-form" onsubmit="trigger()" autocomplete="off">
-        <div class="row-1">
-          <label for="keyword">Keyword<span>*</span></label
-          ><br />
-          <input type="text" id="keyword" name="keyword" required/>
+          <form id="sub-container2" autocomplete="off" onSubmit="return false">
+            <div id="row-1">
+              <label for="keyword" id="labelKeyword"
+                >Keyword<span>*</span></label
+              >
+              <input type="text" id="keyword" name="keyword" required />
+            </div>
+            <div id="row-2">
+              <div class="distance">
+                <label for="distance" id="labelDistance">Distance(miles)</label>
+                <input
+                  type="number"
+                  name="distance"
+                  id="distance"
+                  placeholder="10"
+                />
+              </div>
+              <div class="category">
+                <label for="category" id="labelCategory">Category</label>
+                <select name="category" id="category">
+                  <option value="default">Default</option>
+                  <option value="music">Music</option>
+                  <option value="sports">Sports</option>
+                  <option value="artsandtheatre">Arts & Theatre</option>
+                  <option value="film">Film</option>
+                  <option value="miscellaneous">Miscellaneous</option>
+                </select>
+              </div>
+            </div>
+            <div id="row-3">
+              <div id="k">
+                <label for="location" id="labelLocation"
+                  >Location<span>*</span></label
+                ><input
+                  type="checkbox"
+                  name="auto-detect"
+                  id="auto-detect"
+                  onclick="myFunction()"
+                /><label for="auto-detect" id="labelAuto">
+                  Auto-Detect Location</label
+                ><br />
+              </div>
+              <input type="text" name="location" id="location" required />
+            </div>
+            <div id="row-4">
+              <button type="submit" id="searchButton" onClick="trigger()">
+                SEARCH
+              </button>
+              <button type="button" id="clearButton" onclick="clearAll()">
+                CLEAR
+              </button>
+            </div>
+          </form>
         </div>
-        <div class="row-2">
-          <div class="distance">
-            <label for="distance">Distance(miles)</label><br />
-            <input
-              type="number"
-              name="distance"
-              id="distance"
-              placeholder="10"
-            />
+      </div>
+      <div id="wrapContainer2">
+        <div id="container-2">
+          <div id="nothing"></div>
+          <table id="theTable">
+            <thead id="headings"></thead>
+            <tbody id="results"></tbody>
+          </table>
+        </div>
+      </div>
+      <div id="container-3">
+        <div id="helperFor">
+          <div id="nameOfConcert"></div>
+          <div id="detailsOfConcert">
+            <div id="concertDetails"></div>
+            <div id="seatLayout"></div>
           </div>
-          <div class="category">
-            <label for="category">Category<span>*</span></label><br />
-            <select name="category" id="category" >
-              <option value="default">Default</option>
-              <option value="music">Music</option>
-              <option value="music">Sports</option>
-              <option value="music">Arts & Theatre</option>
-              <option value="music">Film</option>
-              <option value="music">Miscellaneous</option>
-            </select>
+        </div>
+        <div id="showVenueButton"></div>
+      </div>
+      <div id="container-4">
+        <div id="wrapperBorder">
+          <div id="top"></div>
+          <div id="middle"></div>
+          <div id="bottom">
+            <div id="left"></div>
+            <div id="verticalLine"></div>
+            <div id="right"></div>
           </div>
         </div>
-        <div class="row-3">
-          <label for="location">Location<span>*</span></label>
-          <input
-            type="checkbox"
-            name="auto-detect"
-            id="auto-detect"
-            onclick="myFunction()"
-          /><label for="auto-detect">Auto-Detect Location</label>
-          <br />
-          <input type="text" name="location" id="location" required/>
-        </div>
-        <div class="row-4">
-          <button type="submit">Search</button>
-          <button type="reset">Clear</button>
-        </div>
-      </form>
+      </div>
     </div>
   </body>
 </html>
