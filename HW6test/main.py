@@ -186,7 +186,10 @@ def event():
         if len(apiResponse['classifications'])>0:
             if 'segment' in apiResponse['classifications'][0]:
                 if 'name' in apiResponse['classifications'][0]['segment']:
-                    temp['segment'] = apiResponse['classifications'][0]['segment']['name']
+                    if apiResponse['classifications'][0]['segment']['name'] != "Undefined" and apiResponse['classifications'][0]['segment']['name'] != "undefined":
+                        temp['segment'] = apiResponse['classifications'][0]['segment']['name']
+                    else:
+                        temp['segment'] = ''
                 else:
                     temp['segment'] = ''
             else:
@@ -201,7 +204,10 @@ def event():
         if len(apiResponse['classifications'])>0:
             if 'genre' in apiResponse['classifications'][0]:
                 if 'name' in apiResponse['classifications'][0]['genre']:
-                    temp['genre'] = apiResponse['classifications'][0]['genre']['name']
+                    if apiResponse['classifications'][0]['genre']['name'] != "Undefined" and apiResponse['classifications'][0]['genre']['name'] != "undefined":
+                        temp['genre'] = apiResponse['classifications'][0]['genre']['name']
+                    else:
+                        temp['genre']=''
                 else:
                     temp['genre'] = ''
             else:
@@ -218,6 +224,8 @@ def event():
                 if 'name' in apiResponse['classifications'][0]['subGenre']:
                     if apiResponse['classifications'][0]['subGenre']['name'] != "Undefined" and apiResponse['classifications'][0]['subGenre']['name'] != "undefined":
                         temp['subGenre'] = apiResponse['classifications'][0]['subGenre']['name']
+                    else:
+                        temp['subGenre']=''
                 else:
                     temp['subGenre'] = ''
             else:
@@ -234,6 +242,8 @@ def event():
                 if 'name' in apiResponse['classifications'][0]['subType']:
                     if apiResponse['classifications'][0]['subType']['name'] != "Undefined" and apiResponse['classifications'][0]['subType']['name'] != "undefined":
                         temp['subType'] = apiResponse['classifications'][0]['subType']['name']
+                    else:
+                        temp['subType'] =''
                 else:
                     temp['subType'] = ''
             else:
@@ -250,6 +260,8 @@ def event():
                 if 'name' in apiResponse['classifications'][0]['type']:
                     if apiResponse['classifications'][0]['type']['name'] != "Undefined" and apiResponse['classifications'][0]['type']['name'] != "undefined":
                         temp['type'] = apiResponse['classifications'][0]['type']['name']
+                    else:
+                        temp['type'] = ''
                 else:
                     temp['type'] = ''
             else:
