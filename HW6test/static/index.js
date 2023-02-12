@@ -15,6 +15,7 @@ var segmentID;
 var finalLatitude;
 var finalLongitude;
 const defaultDistance = 10;
+// var disabled = true;
 
 /////////////////////////////////////////
 
@@ -35,6 +36,11 @@ function clearDynamicData() {
     document.getElementById("container-3").classList.contains("container-3")
   ) {
     document.getElementById("container-3").classList.remove("container-3");
+  }
+  if (
+    document.getElementById("container-2").classList.contains("container-2")
+  ) {
+    document.getElementById("container-2").classList.remove("container-2");
   }
   if (document.getElementById("helperFor").classList.contains("helperFor")) {
     document.getElementById("helperFor").classList.remove("helperFor");
@@ -79,10 +85,21 @@ function clearDynamicData() {
   if (document.getElementById("middle")) {
     document.getElementById("middle").innerHTML = "";
   }
+  if (document.getElementById("container-4").classList.contains("change1")) {
+    document.getElementById("container-4").classList.remove("change1");
+  }
 }
 
 function trigger() {
   clearDynamicData();
+  // document
+  //   .getElementById("searchButton")
+  //   .addEventListener("click", disableButton);
+  // setTimeout(function () {
+  //   document.getElementById("searchButton").disabled = false;
+  // }, 1000);
+
+  document.getElementById("headings").innerHTML = "";
 
   var googleMapsURL =
     "https://maps.googleapis.com/maps/api/geocode/json?address=";
@@ -137,6 +154,7 @@ function trigger() {
         var userLongitudeIP = loc[1];
         console.log("Lattitudes based on IP", userLatitudeIP, userLongitudeIP);
         if (locationChecked) {
+          clearDynamicData();
           callServer(userLatitudeIP, userLongitudeIP);
         }
       });
@@ -156,8 +174,20 @@ function trigger() {
             var latData = theData.results[0].geometry.location.lat;
             var longData = theData.results[0].geometry.location.lng;
             console.log("Latitudes of Google Maps", latData, longData);
+            clearDynamicData();
             callServer(latData, longData);
           } else {
+            if (
+              document
+                .getElementById("container-2")
+                .classList.contains("container-2")
+            ) {
+              document
+                .getElementById("container-2")
+                .classList.remove("container-2");
+            }
+            clearDynamicData();
+            document.getElementById("container-2").classList.add("container-2");
             document.getElementById("nothing").classList.add("nothing");
             var noOutput = document.getElementById("nothing");
             noOutput.innerHTML = "<h3>No Records found</h3>";
@@ -168,11 +198,14 @@ function trigger() {
 }
 
 function callServer(lat, long) {
+  if (document.contains(document.getElementById("headings"))) {
+    document.getElementById("headings").innerHTML = "";
+  }
   console.log("lat to server function is", lat);
   console.log("long to server function is", long);
   // https://myfirstpython-94534.us-west2.r.appspot.com/
   // var serverURL = "http://localhost:5000/display?";
-  var serverURL = "https://trojansrock.wl.r.appspot.com/display?";
+  var serverURL = "https://trojansrock.wl.r.appspot.com/display?" ;
   finalLatitude = lat;
   finalLongitude = long;
   serverURL =
@@ -201,6 +234,15 @@ function callServer(lat, long) {
         if (document.getElementById("nothing").classList.contains("nothing")) {
           document.getElementById("nothing").classList.remove("nothing");
         }
+        if (
+          document
+            .getElementById("container-2")
+            .classList.contains("container-2")
+        ) {
+          document
+            .getElementById("container-2")
+            .classList.remove("container-2");
+        }
         var finalResults = finalData["result"];
         var headingRow = document.createElement("tr");
         headingRow.innerHTML =
@@ -211,8 +253,18 @@ function callServer(lat, long) {
           "'>Genre</th><th onclick='" +
           "sortTable(4)" +
           "'>Venue</th>";
+        document.getElementById("headings").innerHTML = "";
+        clearDynamicData();
+        document.getElementById("container-2").classList.add("container-2");
+
         document.getElementById("headings").appendChild(headingRow);
-        for (var i = 0; i < finalResults.length; i++) {
+        var count = 0;
+        if (finalResults.length > 20) {
+          count = 20;
+        } else {
+          count = finalResults.length;
+        }
+        for (var i = 0; i < count; i++) {
           var nameOfTheEvent = finalResults[i]["name"];
           var imageURL = finalResults[i]["imageURL"];
           var localDate = finalResults[i]["localDate"];
@@ -228,15 +280,29 @@ function callServer(lat, long) {
           tempRowData +=
             "<td id='event' class='selectable' onClick=seatMap('" +
             idOfEvent +
-            "')>" +
+            "')><p>" +
             nameOfTheEvent +
-            "</td>";
-          tempRowData += "<td id='genre'>" + genre + "</td>";
+            "</p></td>";
+          if (genre == "undefined" || genre == "Undefined") {
+            tempRowData += "<td id='genre'>" + " " + "</td>";
+          } else {
+            tempRowData += "<td id='genre'>" + genre + "</td>";
+          }
           tempRowData += "<td id='venue'>" + venueName + "</td>";
           tempRow.innerHTML = tempRowData;
           document.getElementById("results").appendChild(tempRow);
         }
       } else {
+        if (
+          document
+            .getElementById("container-2")
+            .classList.contains("container-2")
+        ) {
+          document
+            .getElementById("container-2")
+            .classList.remove("container-2");
+        }
+        document.getElementById("container-2").classList.add("container-2");
         document.getElementById("nothing").classList.add("nothing");
         var noOutput = document.getElementById("nothing");
         noOutput.innerHTML = "<h3>No Records found</h3>";
@@ -315,6 +381,9 @@ function sortTable(n) {
 }
 
 function seatMap(eventID) {
+  if (document.getElementById("container-4").classList.contains("change1")) {
+    document.getElementById("container-4").classList.remove("change1");
+  }
   if (document.contains(document.getElementById("nothing"))) {
     document.getElementById("nothing").innerHTML = "";
   }
@@ -367,7 +436,7 @@ function seatMap(eventID) {
   if (document.getElementById("middle")) {
     document.getElementById("middle").innerHTML = "";
   }
-  var eventURL = "https://trojansrock.wl.r.appspot.com/event?";
+  var eventURL = "https://trojansrock.wl.r.appspot.com/";
   eventURL = eventURL + "eventID=" + eventID;
   var dataToServer = fetch(eventURL);
   dataToServer
@@ -399,35 +468,65 @@ function seatMap(eventID) {
           finalResults[0]["localTime"] +
           "</p>" +
           closeDiv; //Date field
-        leftHTML += openDiv + "<h3>Artist/Team</h3>";
-        leftHTML +=
-          "<a id='artistLink' target='_blank' href='" +
-          finalResults[0]["upcomingEventsLink"] +
-          "'>" +
-          finalResults[0]["nameOfEvent"] +
-          "</a>" +
-          closeDiv;
+        if (finalResults[0]["upcomingEventsLink"]) {
+          leftHTML += openDiv + "<h3>Artist/Team</h3>";
+          leftHTML +=
+            "<a id='artistLink' target='_blank' href='" +
+            finalResults[0]["upcomingEventsLink"] +
+            "'>" +
+            finalResults[0]["nameOfEvent"] +
+            "</a>" +
+            closeDiv;
+        }
         leftHTML += openDiv + "<h3>Venue</h3>";
         leftHTML += "<p>" + finalResults[0]["venueName"] + "</p>" + closeDiv;
-        leftHTML += openDiv + "<h3>Genres</h3>";
+        if (
+          finalResults[0]["segment"] ||
+          finalResults[0]["genre"] ||
+          finalResults[0]["subGenre"] ||
+          finalResults[0]["type"] ||
+          finalResults[0]["subType"]
+        ) {
+          leftHTML += openDiv + "<h3>Genres</h3>";
 
-        leftHTML += "<p>";
-        if (finalResults[0]["segment"]) {
-          leftHTML += finalResults[0]["segment"];
+          leftHTML += "<p>";
+          if (
+            finalResults[0]["segment"] &&
+            finalResults[0]["segment"] != "undefined" &&
+            finalResults[0]["segment"] != "Undefined"
+          ) {
+            leftHTML += finalResults[0]["segment"];
+          }
+          if (
+            finalResults[0]["genre"] &&
+            finalResults[0]["genre"] != "undefined" &&
+            finalResults[0]["genre"] != "Undefined"
+          ) {
+            leftHTML += " | " + finalResults[0]["genre"];
+          }
+          if (
+            finalResults[0]["subGenre"] &&
+            finalResults[0]["subGenre"] != "undefined" &&
+            finalResults[0]["subGenre"] != "Undefined"
+          ) {
+            leftHTML += " | " + finalResults[0]["subGenre"];
+          }
+          if (
+            finalResults[0]["type"] &&
+            finalResults[0]["type"] != "undefined" &&
+            finalResults[0]["type"] != "Undefined"
+          ) {
+            leftHTML += " | " + finalResults[0]["type"];
+          }
+          if (
+            finalResults[0]["subType"] &&
+            finalResults[0]["subType"] != "undefined" &&
+            finalResults[0]["subType"] != "Undefined"
+          ) {
+            leftHTML += " | " + finalResults[0]["subType"];
+          }
+          leftHTML += "</p>" + closeDiv;
         }
-        if (finalResults[0]["genre"]) {
-          leftHTML += " | " + finalResults[0]["genre"];
-        }
-        if (finalResults[0]["subGenre"]) {
-          leftHTML += " | " + finalResults[0]["subGenre"];
-        }
-        if (finalResults[0]["type"]) {
-          leftHTML += " | " + finalResults[0]["type"];
-        }
-        if (finalResults[0]["subType"]) {
-          leftHTML += " | " + finalResults[0]["subType"];
-        }
-        leftHTML += "</p>" + closeDiv;
 
         if (finalResults[0]["minPrice"] || finalResults[0]["maxPrice"]) {
           leftHTML += openDiv + "<h3>Price Ranges</h3>";
@@ -517,6 +616,9 @@ function venueDetails(venueName) {
   ) {
     document.getElementById("container-4").classList.remove("container-4");
   }
+  if (document.getElementById("container-4").classList.contains("change1")) {
+    document.getElementById("container-4").classList.remove("change1");
+  }
   if (
     document.getElementById("verticalLine").classList.contains("verticalLine")
   ) {
@@ -536,7 +638,7 @@ function venueDetails(venueName) {
   }
 
   console.log("data in showVenue", venueName);
-  var venueURL = "https://trojansrock.wl.r.appspot.com/venue?venueName=" + venueName;
+  var venueURL = "https://trojansrock.wl.r.appspot.com/" + venueName;
   var dataToServer = fetch(venueURL);
   dataToServer
     .then((response) => response.json())
@@ -549,9 +651,19 @@ function venueDetails(venueName) {
       var closeDiv = "</div>";
       var space =
         "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-      document.getElementById("container-4").classList.add("container-4");
+
       document.getElementById("verticalLine").classList.add("verticalLine");
       document.getElementById("wrapperBorder").classList.add("wrapperBorder");
+      if (finalResults["venueLOGO"]) {
+        document.getElementById("container-4").classList.add("container-4");
+        document.getElementById("wrapperBorder").style.gridTemplateRows =
+          "20% 30% 50%";
+      } else {
+        document.getElementById("container-4").classList.add("change1");
+
+        document.getElementById("wrapperBorder").style.gridTemplateRows =
+          "30% 0% 70%";
+      }
 
       topHTML =
         openDiv +
@@ -582,9 +694,11 @@ function venueDetails(venueName) {
         "'>Open in Google Maps</a>" +
         closeDiv;
       document.getElementById("left").innerHTML = leftHTML;
-
-      middleHTML = "<img id='venueLOGO' src=" + finalResults["venueLOGO"] + ">";
-      document.getElementById("middle").innerHTML = middleHTML;
+      if (finalResults["venueLOGO"]) {
+        middleHTML =
+          "<img id='venueLOGO' src=" + finalResults["venueLOGO"] + ">";
+        document.getElementById("middle").innerHTML = middleHTML;
+      }
 
       rightHTML =
         "<a id='upcomingEvent' target='_blank' href='" +
