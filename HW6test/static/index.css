@@ -319,9 +319,9 @@ table th:nth-child(5) {
   cursor: pointer;
 }
 
-.selectable:hover {
+.selectable > p:hover {
   cursor: pointer;
-  color: blue;
+  color: rgb(137, 181, 231);
 }
 
 td,
@@ -341,10 +341,11 @@ td {
   border-collapse: collapse;
 }
 
-#container-2 {
+.container-2 {
   display: grid;
   margin-top: 50px;
   width: 1200px;
+  /* border: 1px solid blue */
 }
 
 /*  
@@ -377,6 +378,7 @@ SeatMap CSS Begins
   align-content: center;
   justify-content: center;
   margin-top: 40px;
+  margin-left: 20px;
 }
 
 .helperFor {
@@ -416,7 +418,7 @@ SeatMap CSS Begins
 
 #seatLayout > img {
   width: 500px;
-  height: 450px;
+  height: 430px;
 }
 
 #showVenueButton {
@@ -518,20 +520,36 @@ EventDeatails CSS Begins
 
 */
 
+.change1 {
+  display: grid;
+  background-color: white;
+  /* margin-top: 10px; */
+  border-radius: 20px;
+  width: 950px;
+  padding: 20px;
+  height: 220px;
+  margin-bottom: 30px;
+}
+
+.change2 {
+  display: grid;
+  grid-template-rows: 40% 60%;
+}
+
 .container-4 {
   display: grid;
   background-color: white;
-  margin-top: 80px;
+  /* margin-top: 10px; */
   border-radius: 20px;
-  width: 800px;
+  width: 950px;
   padding: 20px;
-  height: 300px;
+  height: 325px;
   margin-bottom: 30px;
 }
 
 #wrapperBorder {
   display: grid;
-  grid-template-rows: 20% 20% 80%;
+  /* grid-template-rows: 20% 30% 50%; */
 }
 
 .wrapperBorder {
@@ -544,6 +562,7 @@ EventDeatails CSS Begins
   flex-direction: column;
   align-items: center;
   margin-top: 20px;
+  /* margin-left: 10px; */
   /* margin-bottom: 30px; */
 }
 
@@ -560,6 +579,7 @@ EventDeatails CSS Begins
   flex-direction: column;
   align-items: center;
   margin-bottom: 5px;
+  justify-content: center;
 }
 
 #bottom {
@@ -574,7 +594,7 @@ EventDeatails CSS Begins
   justify-content: flex-start;
   align-content: flex-start;
   gap: 10px;
-  margin-top:20px;
+  margin-top: 20px;
 }
 
 #left > div > a {
@@ -586,14 +606,14 @@ EventDeatails CSS Begins
   justify-content: flex-start;
 
   margin-left: 100px;
-  margin-top:20px;
+  margin-top: 20px;
 }
 
 .verticalLine {
   border-left: 1px solid black;
-  margin-bottom: 15px;
+  margin-bottom: 25px;
   margin-left: 8px;
-  height: 130px;
+  height: 110px;
   margin-top: 20px;
 }
 
@@ -603,8 +623,7 @@ EventDeatails CSS Begins
 }
 
 #venueLOGO {
-  max-height: 100px;
- 
+  max-height: 90px;
 }
 
 /*  
