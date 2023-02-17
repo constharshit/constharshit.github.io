@@ -203,8 +203,8 @@ function callServer(lat, long) {
   }
   console.log("lat to server function is", lat);
   console.log("long to server function is", long);
-  var serverURL = "https://trojansrock.wl.r.appspot.com/display?";
-  // var serverURL = "https://trojansrock.wl.r.appspot.com/display?";
+
+  var serverURL = "http://localhost:5000/display?";
   finalLatitude = lat;
   finalLongitude = long;
   serverURL =
@@ -435,8 +435,8 @@ function seatMap(eventID) {
   if (document.getElementById("middle")) {
     document.getElementById("middle").innerHTML = "";
   }
-  var eventURL = "https://trojansrock.wl.r.appspot.com/event?";
-  // var eventURL = "https://trojansrock.wl.r.appspot.com/";
+
+  var eventURL = "http://localhost:5000/event?";
   eventURL = eventURL + "eventID=" + eventID;
   var dataToServer = fetch(eventURL);
   dataToServer
@@ -638,8 +638,7 @@ function venueDetails(venueName) {
   }
 
   console.log("data in showVenue", venueName);
-  var venueURL =
-    "https://trojansrock.wl.r.appspot.com/venue?venueName=" + venueName;
+  var venueURL = "http://localhost:5000/venue?venueName=" + venueName;
   var dataToServer = fetch(venueURL);
   dataToServer
     .then((response) => response.json())
@@ -666,46 +665,90 @@ function venueDetails(venueName) {
           "30% 0% 70%";
       }
 
-      topHTML =
-        openDiv +
-        "<h2>&nbsp;&nbsp;" +
-        finalResults["name"] +
-        "&nbsp;&nbsp;</h2><hr>" +
-        closeDiv;
-      document.getElementById("top").innerHTML = topHTML;
+      if (finalResults["name"]) {
+        topHTML =
+          openDiv +
+          "<h2>&nbsp;&nbsp;" +
+          finalResults["name"] +
+          "&nbsp;&nbsp;</h2><hr>" +
+          closeDiv;
+        document.getElementById("top").innerHTML = topHTML;
+      }
 
-      leftHTML =
-        openDiv +
-        "<p><strong>Address: </strong>" +
-        finalResults["address"] +
-        "<br>" +
-        space +
-        finalResults["city"] +
-        ", " +
-        finalResults["stateCode"] +
-        "<br>" +
-        space +
-        finalResults["postalCode"] +
-        "</p>" +
-        closeDiv;
-      leftHTML +=
-        openDiv +
-        "<a id='googleMaps' target='_blank' href='https://www.google.com/maps/search/?api=1&query=" +
-        finalResults["name"] +
-        "'>Open in Google Maps</a>" +
-        closeDiv;
+      leftHTML = openDiv + "<p>";
+      if (
+        finalResults["address"] ||
+        finalResults["city"] ||
+        finalResults["stateCode"] ||
+        finalResults["postalCode"]
+      ) {
+        leftHTML += "<strong>Address: </strong>";
+      }
+
+      if (finalResults["address"]) {
+        leftHTML += finalResults["address"];
+      }
+
+      leftHTML += "<br>";
+
+      if (finalResults["city"]) {
+        leftHTML += space + finalResults["city"];
+      }
+
+      if (finalResults["stateCode"]) {
+        leftHTML += ", " + finalResults["stateCode"];
+      }
+
+      leftHTML += "<br>";
+
+      if (finalResults["postalCode"]) {
+        leftHTML += space + finalResults["postalCode"];
+      }
+
+      leftHTML += "</p>";
+
+      // leftHTML =
+      //   openDiv +
+      //   "<p><strong>Address: </strong>" +
+      //   finalResults["address"] +
+      //   "<br>" +
+      //   space +
+      //   finalResults["city"] +
+      //   ", " +
+      //   finalResults["stateCode"] +
+      //   "<br>" +
+      //   space +
+      //   finalResults["postalCode"] +
+      //   "</p>" +
+      //   closeDiv;
+      if (finalResults["name"]) {
+        leftHTML +=
+          openDiv +
+          "<a id='googleMaps' target='_blank' href='https://www.google.com/maps/search/?api=1&query=" +
+          finalResults["name"] +
+          "'>Open in Google Maps</a>" +
+          closeDiv;
+      }
+      leftHTML += closeDiv;
       document.getElementById("left").innerHTML = leftHTML;
+
       if (finalResults["venueLOGO"]) {
         middleHTML =
           "<img id='venueLOGO' src=" + finalResults["venueLOGO"] + ">";
         document.getElementById("middle").innerHTML = middleHTML;
       }
 
-      rightHTML =
-        "<a id='upcomingEvent' target='_blank' href='" +
-        finalResults["upcomingEvents"] +
-        "'>More events at this venue</a>";
+      rightHTML =""
+      if (finalResults["upcomingEvents"]) {
+        rightHTML =
+          "<a id='upcomingEvent' target='_blank' href='" +
+          finalResults["upcomingEvents"] +
+          "'>More events at this venue</a>";
+      }
+
+
       document.getElementById("right").innerHTML = rightHTML;
+
       const scrollingElement = document.scrollingElement || document.body;
       scrollingElement.scrollTop = scrollingElement.scrollHeight;
     })
