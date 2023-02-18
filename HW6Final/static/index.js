@@ -728,7 +728,7 @@ function venueDetails(venueName) {
       //   closeDiv;
       if (finalResults["name"]) {
         leftHTML +=
-          openDiv +
+          "<br>"+openDiv +
           "<a id='googleMaps' target='_blank' href='https://www.google.com/maps/search/?api=1&query=" +
           finalResults["name"] +
           "'>Open in Google Maps</a>" +
