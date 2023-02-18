@@ -204,8 +204,7 @@ function callServer(lat, long) {
   console.log("lat to server function is", lat);
   console.log("long to server function is", long);
 
-  // var serverURL = "https://trojansrock.wl.r.appspot.com/display?";
-  var serverURL = "http://127.0.0.1:5000/display?";
+  var serverURL = "https://trojansrock.wl.r.appspot.com/display?";
   finalLatitude = lat;
   finalLongitude = long;
   serverURL =
@@ -437,8 +436,8 @@ function seatMap(eventID) {
     document.getElementById("middle").innerHTML = "";
   }
 
-  // var eventURL = "https://trojansrock.wl.r.appspot.com/event?";
-  var eventURL = "http://127.0.0.1:5000/event?";
+  var eventURL = "https://trojansrock.wl.r.appspot.com/event?";
+  
  
   eventURL = eventURL + "eventID=" + eventID;
   var dataToServer = fetch(eventURL);
@@ -641,11 +640,9 @@ function venueDetails(venueName) {
   }
 
   console.log("data in showVenue", venueName);
-  // var venueURL =
-  //   "https://trojansrock.wl.r.appspot.com/venue?venueName=" + venueName;
+  var venueURL = "https://trojansrock.wl.r.appspot.com/venue?venueName=" + venueName;
 
-    var venueURL =
-    "http://127.0.0.1:5000/venue?venueName=" + venueName;
+   
     
   var dataToServer = fetch(venueURL);
   dataToServer
