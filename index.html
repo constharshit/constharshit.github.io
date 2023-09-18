@@ -1,262 +1,1358 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Harshit's Portfolio</title>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, user-scalable=no"
+
+    <!--
+    - favicon
+  -->
+    <link
+      rel="shortcut icon"
+      sizes="32x32"
+      href="./assets/images/harshit-avatar.png"
+      type="image/x-icon"
     />
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <noscript
-      ><link rel="stylesheet" href="assets/css/noscript.css"
-    /></noscript>
+
+    <!--
+    - custom css link
+  -->
+    <link rel="stylesheet" href="./assets/css/style.css" />
+
+    <!--
+    - google font link
+  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
   </head>
-  <body class="is-preload">
-    <!-- Wrapper -->
-    <div id="wrapper" class="fade-in">
-      <!-- Intro -->
-      <div id="intro">
-        <h2>
-          Hello! I'm Harshit Kumar Jain
-        </h2>
-        <p>
-          Designer, Developer and Tech Enthusiast <br />
-          <a href="https://www.linkedin.com/in/harshitkumarjain/"  target= "_blank">
-			@harshitkumarjain
-        </p>
-        <ul class="actions">
-          <li>
-            <a
-              href="#header"
-              class="button icon solid solo fa-arrow-down scrolly"
-              >Continue</a
-            >
-          </li>
-        </ul>
-      </div>
 
-      <!-- Header -->
-      <header id="header">
-        <a  class="logo">Harshit Kumar Jain</a>
-      </header>
+  <body>
+    <!--
+    - #MAIN
+  -->
 
-      <!-- Nav -->
-      <nav id="nav">
-        <ul class="links">
-          <li class="active"><a href="index.html">Projects</a></li>
-          <li><a href="about.html">About Me</a></li>
-          <li><a href="work.html">Experience</a></li>
-          <li><a href="education.html">Education</a></li>
-          
-        </ul>
-        <ul class="icons">
-          <li>
-            <a href="https://www.linkedin.com/in/harshitkumarjain/" target="_blank" class="icon brands alt fa-linkedin"
-              ><span class="label">LinkedIn</span></a
-            >
-          </li>
-          <li>
-            <a href="https://instagram.com/harrshithjain?igshid=OGQ5ZDc2ODk2ZA==" target="_blank" class="icon brands alt fa-instagram"
-              ><span class="label">Instagram</span></a
-            >
-          </li>
-          <li>
-            <a href="https://github.com/constharshit" target="_blank" class="icon brands alt fa-github"
-              ><span class="label">GitHub</span></a
-            >
-          </li>
-        </ul>
-      </nav>
+    <main>
+      <!--
+      - #SIDEBAR
+    -->
 
-      <!-- Main -->
-      <div id="main">
-        <!-- Featured Post -->
-        <article class="post featured">
-          <header class="major">
-           
-            <h2>
-              <a 
+      <aside class="sidebar" data-sidebar>
+        <div class="sidebar-info">
+          <figure class="avatar-box">
+            <img
+              src="./assets/images/harshit-avatar.png"
+              alt="Harshit Kumar Jain"
+              width="80"
+            />
+          </figure>
+
+          <div class="info-content">
+            <h1 class="name" title="Harshit Kumar Jain">Harshit Kumar Jain</h1>
+
+            <p class="title">Computer Science Honors at USC</p>
+          </div>
+
+          <button class="info_more-btn" data-sidebar-btn>
+            <span>Show Contacts</span>
+
+            <ion-icon name="chevron-down"></ion-icon>
+          </button>
+        </div>
+
+        <div class="sidebar-info_more">
+          <div class="separator"></div>
+
+          <ul class="contacts-list">
+            <li class="contact-item">
+              <div class="icon-box">
+                <ion-icon name="mail-outline"></ion-icon>
+              </div>
+
+              <div class="contact-info">
+                <p class="contact-title">Email</p>
+
+                <a href="mailto:hlnu@usc.edu" class="contact-link"
+                  >hlnu@usc.edu</a
                 >
-                Event Search Website<br />
-                </a
-              >
-            </h2>
-            <p>
-              Developed backend applications using JavaScript and Node.js with the Express framework. Leveraged Python programming language and Flask framework for server-side scripting. Created a responsive front-end using Angular, TypeScript, and Bootstrap. Implemented AJAX functionality using HttpClientModule of Angular to enable dynamic interactions. Demonstrated proficiency in handling JSON data in both Python and JavaScript environments. Integrated various APIs, including Ticketmaster, Spotify, Google Maps, Google Geocoding, Ipinfo, Facebook, and Twitter APIs. Deployed and hosted the application on Google Cloud Platform (GCP).
-              <br />
-              <strong>Skills:</strong>  Express.js · TypeScript · Bootstrap (Framework) · Google Cloud Platform (GCP) · Angular · Node.js · AJAX · JavaScript
-            </p>
-          </header>
-          <a class="image main"><img src="images/ES1.png" alt=""
-          /></a>
-          <ul class="actions special">
-            <li><a href="https://drive.google.com/file/d/1tX6EJdnitAjyxRa_8RNsL1iAfExv2LZO/view" target="_blank" class="button large">View Project</a></li>
+              </div>
+            </li>
+
+            <li class="contact-item">
+              <div class="icon-box">
+                <ion-icon name="phone-portrait-outline"></ion-icon>
+              </div>
+
+              <div class="contact-info">
+                <p class="contact-title">Phone</p>
+
+                <a href="tel:+12135129553" class="contact-link"
+                  >+1 (213) 512-9553</a
+                >
+              </div>
+            </li>
+
+            <li class="contact-item">
+              <div class="icon-box">
+                <ion-icon name="calendar-outline"></ion-icon>
+              </div>
+
+              <div class="contact-info">
+                <p class="contact-title">Birthday</p>
+
+                <time datetime="1995-09-20">September 20, 1995</time>
+              </div>
+            </li>
+
+            <li class="contact-item">
+              <div class="icon-box">
+                <ion-icon name="location-outline"></ion-icon>
+              </div>
+
+              <div class="contact-info">
+                <p class="contact-title">Location</p>
+
+                <address>Los Angeles, California, USA</address>
+              </div>
+            </li>
           </ul>
+
+          <div class="separator"></div>
+
+          <ul class="social-list">
+            <li class="social-item">
+              <a
+                href="https://www.linkedin.com/in/harshitkumarjain/"
+                target="_blank"
+                class="social-link"
+              >
+                <ion-icon name="logo-linkedin"></ion-icon>
+              </a>
+            </li>
+
+            <li class="social-item">
+              <a
+                href="https://github.com/constharshit"
+                target="_blank"
+                class="social-link"
+              >
+                <ion-icon name="logo-github"></ion-icon>
+              </a>
+            </li>
+
+            <li class="social-item">
+              <a
+                href="https://www.instagram.com/harrshithjain/?igshid=OGQ5ZDc2ODk2ZA%3D%3D"
+                target="_blank"
+                class="social-link"
+              >
+                <ion-icon name="logo-instagram"></ion-icon>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </aside>
+
+      <!--
+      - #main-content
+    -->
+
+      <div class="main-content">
+        <!--
+        - #NAVBAR
+      -->
+
+        <nav class="navbar">
+          <ul class="navbar-list">
+            <li class="navbar-item">
+              <button class="navbar-link active" data-nav-link>About</button>
+            </li>
+
+            <li class="navbar-item">
+              <button class="navbar-link" data-nav-link>Resume</button>
+            </li>
+
+            <li class="navbar-item">
+              <button class="navbar-link" data-nav-link>Portfolio</button>
+            </li>
+
+            <!-- <li class="navbar-item">
+              <button class="navbar-link" data-nav-link>Blog</button>
+            </li> -->
+
+            <li class="navbar-item">
+              <button class="navbar-link" data-nav-link>Contact</button>
+            </li>
+          </ul>
+        </nav>
+
+        <!--
+        - #ABOUT
+      -->
+
+        <article class="about active" data-page="about">
+          <header>
+            <h2 class="h2 article-title">About me</h2>
+          </header>
+
+          <section class="about-text" style="text-align: justify">
+            <p>
+              I am a highly motivated individual currently pursuing an MS in
+              Computer Science, building on valuable experiences gained in my
+              family business. With a Bachelor's degree in Electronics and
+              Communication, I expanded my horizons by completing a diploma in
+              Pharmacy while actively contributing to various aspects of our
+              family enterprise. From sales to order management and team
+              leadership, my journey reflects a strong commitment to growth and
+              excellence. During my time in the family business, my fascination
+              with our ERP software sparked my curiosity, driving me towards an
+              MS in Computer Science. Though offered admission to both NYU
+              Courant and USC Viterbi, I chose USC due to my passion for tennis
+              and the welcoming climate it offers. As a proud member of USC's
+              club tennis team, I've harnessed not only athletic prowess but
+              also vital lessons in teamwork, discipline, and determination.
+            </p>
+
+            <p>
+              My USC journey has exposed me to transformative courses, with one
+              standout experience being the Web Technologies course under
+              Professor Papa's guidance. Creating a functional Event Search
+              website demonstrated my mastery of front-end and back-end
+              development. Further, crafting an iOS app for event discovery
+              solidified my skills and nurtured my confidence. Now, as I step
+              into the next chapter, I am eager to gather practical industry
+              experience through an internship. My goal is to contribute my
+              expertise, foster continued growth as a software engineer, and
+              drive impact in meaningful projects. Combining a strong business
+              foundation, technical prowess, and the dedication of a
+              student-athlete, I'm primed to thrive in the realm of software
+              engineering, leaving a notable imprint wherever I go.
+            </p>
+          </section>
+
+          <!--
+          - service
+        -->
+
+          <section class="service">
+            <h3 class="h3 service-title">What i'm doing</h3>
+
+            <ul class="service-list">
+              <li class="service-item">
+                <div class="service-icon-box">
+                  <img
+                    src="./assets/images/fullstack.png
+                "
+                    alt="design icon"
+                    width="40"
+                  />
+                </div>
+
+                <div class="service-content-box">
+                  <h4 class="h4 service-item-title">Full Stack Development</h4>
+
+                  <p class="service-item-text">
+                    Developing full stack applications utilizing Angular,
+                    Node.js, Express.js, Flask, and Python.
+                  </p>
+                </div>
+              </li>
+
+              <li class="service-item">
+                <div class="service-icon-box">
+                  <img
+                    src="./assets/images/icon-dev.svg"
+                    alt="Web development icon"
+                    width="40"
+                  />
+                </div>
+
+                <div class="service-content-box">
+                  <h4 class="h4 service-item-title">Web development</h4>
+
+                  <p class="service-item-text">
+                    Building intuitive, responsive web interfaces with Angular,
+                    Bootstrap, and other front end tools.
+                  </p>
+                </div>
+              </li>
+
+              <li class="service-item">
+                <div class="service-icon-box">
+                  <img
+                    src="./assets/images/icon-app.svg"
+                    alt="mobile app icon"
+                    width="40"
+                  />
+                </div>
+
+                <div class="service-content-box">
+                  <h4 class="h4 service-item-title">Mobile apps</h4>
+
+                  <p class="service-item-text">
+                    Developing seamless iOS apps from start to finish using
+                    Swift, Xcode, and SwiftUI.
+                  </p>
+                </div>
+              </li>
+
+              <li class="service-item">
+                <div class="service-icon-box">
+                  <img
+                    src="./assets/images/tennis.png"
+                    alt="camera icon"
+                    width="40"
+                  />
+                </div>
+
+                <div class="service-content-box">
+                  <h4 class="h4 service-item-title">Tennis</h4>
+
+                  <p class="service-item-text">
+                    Representing USC as a tournament team player with the Trojan
+                    Tennis Club.
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </section>
+
+          <!--
+          - testimonials
+        -->
+
+          <section class="testimonials">
+            <h3 class="h3 testimonials-title">Testimonials</h3>
+
+            <ul class="testimonials-list has-scrollbar">
+              <li class="testimonials-item">
+                <div class="content-card" data-testimonials-item>
+                  <figure class="testimonials-avatar-box">
+                    <img
+                      src="./assets/images/avatar-4.png"
+                      alt="Girish Jain"
+                      width="60"
+                      data-testimonials-avatar
+                    />
+                  </figure>
+
+                  <h4
+                    class="h4 testimonials-item-title"
+                    data-testimonials-title
+                  >
+                    Girish Jain
+                  </h4>
+
+                  <div class="testimonials-text" data-testimonials-text>
+                    <p>
+                      Harshit quickly leveraged his technical expertise and
+                      systems management acumen to optimize our operations and
+                      drive business growth.
+                    </p>
+                  </div>
+                </div>
+              </li>
+
+              <li class="testimonials-item">
+                <div class="content-card" data-testimonials-item>
+                  <figure class="testimonials-avatar-box">
+                    <img
+                      src="./assets/images/avatar-7.png"
+                      alt="Shiny"
+                      width="60"
+                      data-testimonials-avatar
+                    />
+                  </figure>
+
+                  <h4
+                    class="h4 testimonials-item-title"
+                    data-testimonials-title
+                  >
+                    Shiny
+                  </h4>
+
+                  <div class="testimonials-text" data-testimonials-text>
+                    <p>
+                      I worked closely with Harshit to manage pharmaceutical
+                      distribution logistics and inventory tracking. His
+                      technical acumen and process optimization were extremely
+                      valuable.
+                    </p>
+                  </div>
+                </div>
+              </li>
+
+              <li class="testimonials-item">
+                <div class="content-card" data-testimonials-item>
+                  <figure class="testimonials-avatar-box">
+                    <img
+                      src="./assets/images/dara.png"
+                      alt="Humanvitha"
+                      width="60"
+                      data-testimonials-avatar
+                    />
+                  </figure>
+
+                  <h4
+                    class="h4 testimonials-item-title"
+                    data-testimonials-title
+                  >
+                    Humanvitha
+                  </h4>
+
+                  <div class="testimonials-text" data-testimonials-text>
+                    <p>
+                      Harshit has an impressive grasp of web development with
+                      Node.js, Angular and other modern frameworks. Working with
+                      him taught me so much about building robust web apps.
+                    </p>
+                  </div>
+                </div>
+              </li>
+
+              <li class="testimonials-item">
+                <div class="content-card" data-testimonials-item>
+                  <figure class="testimonials-avatar-box">
+                    <img
+                      src="./assets/images/avatar-1.png"
+                      alt="Shubham"
+                      width="60"
+                      data-testimonials-avatar
+                    />
+                  </figure>
+
+                  <h4
+                    class="h4 testimonials-item-title"
+                    data-testimonials-title
+                  >
+                    Shubham
+                  </h4>
+
+                  <div class="testimonials-text" data-testimonials-text>
+                    <p>
+                      I collaborated with Harshit on several software projects
+                      at USC. His programming skills in Java, JavaScript, Python
+                      and more were top-notch and he was always willing to help
+                      others learn.
+                    </p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </section>
+
+          <!--
+          - testimonials modal
+        -->
+
+          <div class="modal-container" data-modal-container>
+            <div class="overlay" data-overlay></div>
+
+            <section class="testimonials-modal">
+              <button class="modal-close-btn" data-modal-close-btn>
+                <ion-icon name="close-outline"></ion-icon>
+              </button>
+
+              <div class="modal-img-wrapper">
+                <figure class="modal-avatar-box">
+                  <img
+                    src="./assets/images/avatar-1.png"
+                    alt="Girish Jain"
+                    width="80"
+                    data-modal-img
+                  />
+                </figure>
+
+                <img src="./assets/images/icon-quote.svg" alt="quote icon" />
+              </div>
+
+              <div class="modal-content">
+                <h4 class="h3 modal-title" data-modal-title>Girish Jain</h4>
+
+                <!-- <time datetime="2021-06-14">14 June, 2021</time> -->
+
+                <div data-modal-text>
+                  <p>
+                    Richard was hired to create a corporate identity. We were
+                    very pleased with the work done. She has a lot of experience
+                    and is very concerned about the needs of client. Lorem ipsum
+                    dolor sit amet, ullamcous cididt consectetur adipiscing
+                    elit, seds do et eiusmod tempor incididunt ut laborels
+                    dolore magnarels alia.
+                  </p>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <!--
+          - clients
+        -->
+
+          <!-- <section class="clients">
+
+            <h3 class="h3 clients-title">Clients</h3>
+
+            <ul class="clients-list has-scrollbar">
+              <li class="clients-item">
+                <a href="#">
+                  <img
+                    src="./assets/images/logo-1-color.png"
+                    alt="client logo"
+                  />
+                </a>
+              </li>
+
+              <li class="clients-item">
+                <a href="#">
+                  <img
+                    src="./assets/images/logo-2-color.png"
+                    alt="client logo"
+                  />
+                </a>
+              </li>
+
+              <li class="clients-item">
+                <a href="#">
+                  <img
+                    src="./assets/images/logo-3-color.png"
+                    alt="client logo"
+                  />
+                </a>
+              </li>
+
+              <li class="clients-item">
+                <a href="#">
+                  <img
+                    src="./assets/images/logo-4-color.png"
+                    alt="client logo"
+                  />
+                </a>
+              </li>
+
+              <li class="clients-item">
+                <a href="#">
+                  <img
+                    src="./assets/images/logo-5-color.png"
+                    alt="client logo"
+                  />
+                </a>
+              </li>
+
+              <li class="clients-item">
+                <a href="#">
+                  <img
+                    src="./assets/images/logo-6-color.png"
+                    alt="client logo"
+                  />
+                </a>
+              </li>
+            </ul>
+          </section> -->
+
+          <section class="testimonials">
+            <h3 class="h3 testimonials-title">Cetrifications</h3>
+
+            <ul class="testimonials-list has-scrollbar">
+              <li class="testimonials-item">
+                <div class="content-card">
+                  <figure class="testimonials-avatar-box">
+                    <img
+                      src="./assets/images/udemy.png"
+                      alt="Cisco"
+                      width="60"
+                      data-testimonials-avatar
+                    />
+                  </figure>
+
+                  <h4
+                    class="h4 testimonials-item-title"
+                    data-testimonials-title
+                  >
+                    Udemy
+                    <a
+                      href="https://www.udemy.com/certificate/UC-6f5c2c47-6d6e-4516-9ac4-a0746f7787fd/"
+                      target="_blank"
+                    >
+                      <img
+                        src="./assets/images/openlink.png"
+                        height="20px"
+                        ,=""
+                        width="30px"
+                        style="display: inline !important; padding-left: 10px"
+                    /></a>
+                  </h4>
+
+                  <div class="testimonials-text" data-testimonials-text>
+                    <p>Java Programming Masterclass</p>
+                  </div>
+                </div>
+              </li>
+
+              <li class="testimonials-item">
+                <div class="content-card">
+                  <figure class="testimonials-avatar-box">
+                    <img
+                      src="./assets/images/cisco.png"
+                      alt="Cisco"
+                      width="60"
+                      data-testimonials-avatar
+                    />
+                  </figure>
+
+                  <h4
+                    class="h4 testimonials-item-title"
+                    data-testimonials-title
+                  >
+                    Cisco
+                    <a
+                      href="https://www.credly.com/badges/1ae78226-65cb-4f61-bd38-f194cafa01aa"
+                      target="_blank"
+                    >
+                      <img
+                        src="./assets/images/openlink.png"
+                        height="20px"
+                        ,=""
+                        width="30px"
+                        style="display: inline !important; padding-left: 10px"
+                    /></a>
+                  </h4>
+
+                  <div class="testimonials-text" data-testimonials-text>
+                    <p>Introduction to Packet Tracer</p>
+                  </div>
+                </div>
+              </li>
+
+              <li class="testimonials-item">
+                <div class="content-card">
+                  <figure class="testimonials-avatar-box">
+                    <img
+                      src="./assets/images/udemy.png"
+                      alt="Cisco"
+                      width="60"
+                      data-testimonials-avatar
+                    />
+                  </figure>
+
+                  <h4
+                    class="h4 testimonials-item-title"
+                    data-testimonials-title
+                  >
+                    Udemy
+                    <a
+                      href="https://www.udemy.com/certificate/UC-08a20bf9-f1cd-4e31-b846-2fda5d6c7b67/"
+                      target="_blank"
+                    >
+                      <img
+                        src="./assets/images/openlink.png"
+                        height="20px"
+                        ,=""
+                        width="30px"
+                        style="display: inline !important; padding-left: 10px"
+                    /></a>
+                  </h4>
+
+                  <div class="testimonials-text" data-testimonials-text>
+                    <p>Angular - The Complete Guide</p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </section>
         </article>
 
-        <!-- Posts -->
-        <section class="posts">
+        <!--
+        - #RESUME
+      -->
 
-          <article>
-            <header>
-              
-              <h2>
-                <a 
-                  >Event Finder iOS App
-                  </a
-                >
-              </h2>
-            </header>
-            <a  class="image fit"
-              ><img src="images/iOS.png" alt=""
-            /></a>
-            <p>
-              Developed an iOS app using Swift programming language and Xcode, focusing on creating a user-friendly interface with SwiftUI framework. Integrated dynamic location-based features utilizing Google Maps APIs and SwiftUI. Managed third-party libraries efficiently through Swift Package Manager for streamlined dependency management. Utilized JavaScript and Node.js with Express for backend development.
-              <br />
-              <strong>Skills:</strong> Swift (Programming Language) · Xcode · iOS Development · SwiftUI · Google Cloud Platform (GCP) · Swift Package Manager
-            </p>
-            <ul class="actions special">
-              <li><a href="https://drive.google.com/file/d/11qdMBFhenGhVQ0tYVutUJ7DNUsbxwEDM/view" target="_blank" class="button">View Project</a></li>
+        <article class="resume" data-page="resume">
+          <header>
+            <h2 class="h2 article-title">
+              Resume
+              <a
+                href="./assets/docs/HarshitKumar_Jain_resume.pdf"
+                target="_blank"
+                style="display: inline"
+                ><img
+                  src="./assets/images/resume-download.png"
+                  alt="resume"
+                  width="30"
+                  height="30"
+                  style="display: inline"
+              /></a>
+            </h2>
+          </header>
+
+          <section class="timeline">
+            <div class="title-wrapper">
+              <div class="icon-box">
+                <ion-icon name="book-outline"></ion-icon>
+              </div>
+
+              <h3 class="h3">Education</h3>
+            </div>
+
+            <ol class="timeline-list">
+              <li class="timeline-item">
+                <h4 class="h4 timeline-item-title">
+                  University of Southern California - Los Angeles, California
+                </h4>
+
+                <span>Expected: December 2024</span>
+
+                <p class="timeline-text">
+                  Master of Science in Computer Science with Honors
+                </p>
+                <p class="timeline-text">
+                  <b>Relevant Coursework:</b> Web Technologies, Database
+                  Systems, Information Retrieval and Web Search Engines,
+                  Programming Systems Design, Scientific Computing and
+                  Visualization, Foundations of Data Management
+                </p>
+                <p class="timeline-text"><b>GPA:</b> 4.0/4.0</p>
+              </li>
+
+              <li class="timeline-item">
+                <h4 class="h4 timeline-item-title">
+                  Koneru Lakshmiah University - Vijayawada, India
+                </h4>
+
+                <span>2013 - 2017</span>
+
+                <p class="timeline-text">
+                  Bachelor of Technology in Electronics and Communication
+                  Engineering
+                </p>
+                <p class="timeline-text">
+                  <b>Relevant Coursework:</b> Data Structures, Object Oriented
+                  Programming, Computer Networks, Analysis of Algorithms
+                </p>
+                <p class="timeline-text"><b>CGPA:</b> 8.06/10</p>
+              </li>
+            </ol>
+          </section>
+
+          <section class="timeline">
+            <div class="title-wrapper">
+              <div class="icon-box">
+                <ion-icon name="cog"></ion-icon>
+              </div>
+
+              <h3 class="h3">Experience</h3>
+            </div>
+
+            <ol class="timeline-list">
+              <li class="timeline-item">
+                <h4 class="h4 timeline-item-title">
+                  Viterbi School of Engineering - Los Angeles, California
+                </h4>
+                <p class="timeline-text">
+                  <b>Teaching Assistant - CSCI 201</b>
+                </p>
+
+                <span>August 2023 - Present</span>
+
+                <p class="timeline-text">
+                  Collaboratively guiding a class of 310 students within a
+                  5-member Teaching Assistant team, in developing large-scale,
+                  graphical Java applications encompassing concurrency,
+                  animations, web integration, and database backends.
+                </p>
+              </li>
+
+              <li class="timeline-item">
+                <h4 class="h4 timeline-item-title">
+                  Shantilal & Company - Vijayawada, India
+                </h4>
+                <p class="timeline-text"><b>Chief Executive Officer</b></p>
+
+                <span>September 2021 - December 2022</span>
+
+                <p class="timeline-text" style="text-align: justify">
+                  Collaboratively guiding a class of 310 students within a
+                  5-member Teaching Assistant team, in developing large-scale,
+                  graphical Java applications encompassing concurrency,
+                  animations, web integration, and database backends.
+                </p>
+              </li>
+
+              <li class="timeline-item">
+                <h4 class="h4 timeline-item-title">
+                  Shantilal & Company - Vijayawada, India
+                </h4>
+                <p class="timeline-text">
+                  <b>Technology and Operations Manager</b>
+                </p>
+
+                <span>September 2021 - December 2022</span>
+
+                <p class="timeline-text" style="text-align: justify">
+                  Supervised 15 employees, oversaw distribution of 25 pharma
+                  companies (Pfizer, J&J, P&G) drugs to 200+ customers including
+                  retail, hospital & medical colleges. Directed pharmaceutical
+                  distribution business operations - oversaw inventory, customer
+                  service, and logistics. Improved efficiency by accomplishing
+                  new processes that reduced time required for order processing
+                  by 25%.
+                </p>
+              </li>
+            </ol>
+          </section>
+
+          <section class="skill">
+            <h3 class="h3 skills-title">My skills</h3>
+
+            <ul class="skills-list content-card">
+              <li class="skills-item">
+                <div class="title-wrapper">
+                  <h5 class="h5" style="color: #ceb15a">
+                    Languages
+                    <span class="h5"
+                      >Java, Python, JavaScript, TypeScript, C++, Swift,
+                      SQL</span
+                    >
+                  </h5>
+                  <!-- <data value="80">80%</data> -->
+                </div>
+
+                <!-- <div class="skill-progress-bg">
+                  <div class="skill-progress-fill" style="width: 80%"></div>
+                </div> -->
+              </li>
+
+              <li class="skills-item">
+                <div class="title-wrapper">
+                  <h5 class="h5" style="color: #ceb15a">
+                    Web Technologies
+                    <span class="h5"
+                      >Angular, React.js, Node.js, Express.js, HTML5, CSS,
+                      Flask, Bootstrap, REST APIs</span
+                    >
+                  </h5>
+                </div>
+              </li>
+
+              <li class="skills-item">
+                <div class="title-wrapper">
+                  <h5 class="h5" style="color: #ceb15a">
+                    Databases/Cloud Services
+                    <span class="h5"
+                      >MySQL, MongoDB, NoSQL, Firebase, Google Cloud Platform
+                      (GCP), AWS</span
+                    >
+                  </h5>
+                </div>
+              </li>
+
+              <li class="skills-item">
+                <div class="title-wrapper">
+                  <h5 class="h5" style="color: #ceb15a">
+                    Frameworks & Tools
+                    <span class="h5"
+                      >Git, Hadoop, VS Code, Xcode, Eclipse, IntelliJ</span
+                    >
+                  </h5>
+                </div>
+              </li>
             </ul>
-          </article>
-          <article>
-            <header>
-              
-              <h2>
-                <a 
-                  >
-                  Event Search Webpage (Static)
-                  </a
-                >
-              </h2>
-            </header>
-            <a class="image fit"
-              ><img src="images/S4.png" alt=""
-            /></a>
-            <p>
-              Gained hands-on experience in Python programming language and Flask framework for server-side scripting. Utilized the Google API and Ticketmaster API to integrate data and functionality into the application. Created interactive web pages using HTML, CSS, and JavaScript, leveraging the DOM and JSON format. Implemented AJAX functionality using the Fetch API to enable asynchronous data exchange with the server. Demonstrated proficiency in handling JSON data in both Python and JavaScript environments. Deployed and hosted the application on a Cloud Platform like GCP, AWS, or Azure for real-world deployment experience. Utilized modern techniques for handling asynchronous data in web development by opting for Fetch API.
-              <br />
-              <strong>Skills:</strong>  Flask · JSON · Google Maps API · Ticketmaster API · Fetch API · Facebook API · Twitter API · Ipinfo API · Google Cloud Platform (GCP) · AJAX · Python (Programming Language)
-            </p>
-            <ul class="actions special">
-              <li><a href="https://drive.google.com/file/d/1_jWS5O3D0IISfjG7HKxrBVBqZ36Mai9H/view?usp=sharing" target="_blank" class="button">View Project</a></li>
+          </section>
+        </article>
+
+        <!--
+        - #PORTFOLIO
+      -->
+
+        <article class="portfolio" data-page="portfolio">
+          <header>
+            <h2 class="h2 article-title">Portfolio</h2>
+          </header>
+
+          <section class="projects">
+            <ul class="filter-list">
+              <li class="filter-item">
+                <button class="active" data-filter-btn>All</button>
+              </li>
+
+              <li class="filter-item">
+                <button data-filter-btn>Full Stack</button>
+              </li>
+
+              <li class="filter-item">
+                <button data-filter-btn>iOS</button>
+              </li>
+
+              <li class="filter-item">
+                <button data-filter-btn>Web development</button>
+              </li>
+
+              <li class="filter-item">
+                <button data-filter-btn>Database Design</button>
+              </li>
             </ul>
-          </article>
-          <article>
-            <header>
-              
-              <h2>
-                <a href="#"
-                  >Database for Dental Practice Business<br />
-                  </a
+
+            <div class="filter-select-box">
+              <button class="filter-select" data-select>
+                <div class="select-value" data-selecct-value>
+                  Select category
+                </div>
+
+                <div class="select-icon">
+                  <ion-icon name="chevron-down"></ion-icon>
+                </div>
+              </button>
+
+              <ul class="select-list">
+                <li class="select-item">
+                  <button data-select-item>All</button>
+                </li>
+
+                <li class="select-item">
+                  <button data-select-item>Full Stack</button>
+                </li>
+
+                <li class="select-item">
+                  <button data-select-item>iOS</button>
+                </li>
+
+                <li class="select-item">
+                  <button data-select-item>Database Design</button>
+                </li>
+
+                <li class="select-item">
+                  <button data-select-item>Web development</button>
+                </li>
+              </ul>
+            </div>
+
+            <ul class="project-list">
+              <!-- web development -->
+              <li
+                class="project-item active"
+                data-filter-item
+                data-category="web development"
+              >
+                <a href="#">
+                  <figure class="project-img">
+                    <div class="project-item-icon-box">
+                      <ion-icon name="eye-outline"></ion-icon>
+                    </div>
+
+                    <img
+                      src="./assets/images/webdev.png"
+                      alt="static web pages"
+                      loading="lazy"
+                    />
+                  </figure>
+
+                  <h3 class="project-title">
+                    Static Web Pages using HTML and CSS
+                  </h3>
+
+                  <p class="project-category">Web development</p>
+                </a>
+              </li>
+
+              <!-- Full Stack -->
+              <li
+                class="project-item active"
+                data-filter-item
+                data-category="full stack"
+              >
+                <a
+                  href="https://drive.google.com/file/d/1tX6EJdnitAjyxRa_8RNsL1iAfExv2LZO/view"
+                  target="_blank"
                 >
-              </h2>
-            </header>
-            <a  class="image fit"
-              ><img src="images/DBHW1.png" alt=""
-            /></a>
-            <p>
-              I undertook the design and development of a sophisticated database tailored for a newly established dental practice. The project aimed to streamline operational processes by efficiently managing patient data, appointments, and critical practice-related information.
-              <br />
-              <strong>Skills:</strong> Database Design · Entity-Relationship Modeling · Data Modeling
-            </p>
-           
-          </article>
-          <article>
-            <header>
-              <h2>
-                <a 
-                  >Static Web Pages using HTML and CSS
-                  </a
+                  <figure class="project-img">
+                    <div class="project-item-icon-box">
+                      <ion-icon name="eye-outline"></ion-icon>
+                    </div>
+
+                    <img
+                      src="./assets/images/eventwebsite.png"
+                      alt="event search website"
+                      loading="lazy"
+                    />
+                  </figure>
+
+                  <h3 class="project-title">Event Search Website</h3>
+
+                  <p class="project-category">Full Stack</p>
+                </a>
+              </li>
+
+              <li
+                class="project-item active"
+                data-filter-item
+                data-category="full stack"
+              >
+                <a
+                  href="https://drive.google.com/file/d/1_jWS5O3D0IISfjG7HKxrBVBqZ36Mai9H/view"
+                  target="_blank"
                 >
-              </h2>
-            </header>
-            <a  class="image fit"
-              ><img src="images/staticHome.jpg" alt=""
-            /></a>
-            <p>
-              In this project, I successfully reproduced two web pages, namely home.html and nature.html, by writing HTML and CSS directly without relying on any additional tools or editors. The objective of the assignment was to closely replicate the provided screenshots and video of the web pages.
-              <br />
-              <strong>Skills:</strong>  HTML5 · Cascading Style Sheets (CSS)
-            </p>
-          
-          </article>
+                  <figure class="project-img">
+                    <div class="project-item-icon-box">
+                      <ion-icon name="eye-outline"></ion-icon>
+                    </div>
 
+                    <img
+                      src="./assets/images/evenstatic.png"
+                      alt="event search static"
+                      loading="lazy"
+                    />
+                  </figure>
 
+                  <h3 class="project-title">Event Search Webpage (Static)</h3>
 
-          
-        </section>
+                  <p class="project-category">Full Stack</p>
+                </a>
+              </li>
 
-        <!-- Footer -->
+              <!-- database design -->
+              <li
+                class="project-item active"
+                data-filter-item
+                data-category="database design"
+              >
+                <a
+                  href="https://drive.google.com/file/d/1wEkJ3kSofpDRYZJjfljSGkEK0e1-sb6W/view?usp=sharing"
+                  target="_blank"
+                >
+                  <figure class="project-img">
+                    <div class="project-item-icon-box">
+                      <ion-icon name="eye-outline"></ion-icon>
+                    </div>
 
+                    <img
+                      src="./assets/images/database.png"
+                      alt="databse for dental"
+                      loading="lazy"
+                    />
+                  </figure>
+
+                  <h3 class="project-title">
+                    Database for Dental Practice Business
+                  </h3>
+
+                  <p class="project-category">Database Design</p>
+                </a>
+              </li>
+
+              <!-- iOS -->
+              <li
+                class="project-item active"
+                data-filter-item
+                data-category="ios"
+              >
+                <a
+                  href="https://drive.google.com/file/d/11qdMBFhenGhVQ0tYVutUJ7DNUsbxwEDM/view"
+                  target="_blank"
+                >
+                  <figure class="project-img">
+                    <div class="project-item-icon-box">
+                      <ion-icon name="eye-outline"></ion-icon>
+                    </div>
+
+                    <img
+                      src="./assets/images/eventios.png"
+                      alt="event search iOS"
+                      loading="lazy"
+                    />
+                  </figure>
+
+                  <h3 class="project-title">Event Finder iOS App</h3>
+
+                  <p class="project-category">iOS</p>
+                </a>
+              </li>
+            </ul>
+          </section>
+        </article>
+
+        <!--
+        - #BLOG
+      -->
+
+        <!-- <article class="blog" data-page="blog">
+          <header>
+            <h2 class="h2 article-title">Blog</h2>
+          </header>
+
+          <section class="blog-posts">
+            <ul class="blog-posts-list">
+              <li class="blog-post-item">
+                <a href="https://dailytrojan.com/2012/04/11/club-tennis-team-making-as-much-noise-as-varsity/" target="_blank">
+                  <figure class="blog-banner-box">
+                    <img
+                      src="./assets/images/troja.jpeg"
+                      alt="Club Tennis"
+                      loading="lazy"
+                    />
+                  </figure>
+
+                  <div class="blog-content">
+                    <div class="blog-meta">
+                      <p class="blog-category">Design</p>
+
+                      <span class="dot"></span>
+
+                      <time datetime="2022-02-23">Fab 23, 2022</time>
+                    </div>
+
+                    <h3 class="h3 blog-item-title">
+                      Design conferences in 2022
+                    </h3>
+
+                    <p class="blog-text">
+                      Veritatis et quasi architecto beatae vitae dicta sunt,
+                      explicabo.
+                    </p>
+                  </div>
+                </a>
+              </li>
+
+              <li class="blog-post-item">
+                <a href="#">
+                  <figure class="blog-banner-box">
+                    <img
+                      src="./assets/images/blog-2.jpg"
+                      alt="Best fonts every designer"
+                      loading="lazy"
+                    />
+                  </figure>
+
+                  <div class="blog-content">
+                    <div class="blog-meta">
+                      <p class="blog-category">Design</p>
+
+                      <span class="dot"></span>
+
+                      <time datetime="2022-02-23">Fab 23, 2022</time>
+                    </div>
+
+                    <h3 class="h3 blog-item-title">
+                      Best fonts every designer
+                    </h3>
+
+                    <p class="blog-text">
+                      Sed ut perspiciatis, nam libero tempore, cum soluta nobis
+                      est eligendi.
+                    </p>
+                  </div>
+                </a>
+              </li>
+
+              <li class="blog-post-item">
+                <a href="#">
+                  <figure class="blog-banner-box">
+                    <img
+                      src="./assets/images/blog-3.jpg"
+                      alt="Design digest #80"
+                      loading="lazy"
+                    />
+                  </figure>
+
+                  <div class="blog-content">
+                    <div class="blog-meta">
+                      <p class="blog-category">Design</p>
+
+                      <span class="dot"></span>
+
+                      <time datetime="2022-02-23">Fab 23, 2022</time>
+                    </div>
+
+                    <h3 class="h3 blog-item-title">Design digest #80</h3>
+
+                    <p class="blog-text">
+                      Excepteur sint occaecat cupidatat no proident, quis
+                      nostrum exercitationem ullam corporis suscipit.
+                    </p>
+                  </div>
+                </a>
+              </li>
+
+              <li class="blog-post-item">
+                <a href="#">
+                  <figure class="blog-banner-box">
+                    <img
+                      src="./assets/images/blog-4.jpg"
+                      alt="UI interactions of the week"
+                      loading="lazy"
+                    />
+                  </figure>
+
+                  <div class="blog-content">
+                    <div class="blog-meta">
+                      <p class="blog-category">Design</p>
+
+                      <span class="dot"></span>
+
+                      <time datetime="2022-02-23">Fab 23, 2022</time>
+                    </div>
+
+                    <h3 class="h3 blog-item-title">
+                      UI interactions of the week
+                    </h3>
+
+                    <p class="blog-text">
+                      Enim ad minim veniam, consectetur adipiscing elit, quis
+                      nostrud exercitation ullamco laboris nisi.
+                    </p>
+                  </div>
+                </a>
+              </li>
+
+              <li class="blog-post-item">
+                <a href="#">
+                  <figure class="blog-banner-box">
+                    <img
+                      src="./assets/images/blog-5.jpg"
+                      alt="The forgotten art of spacing"
+                      loading="lazy"
+                    />
+                  </figure>
+
+                  <div class="blog-content">
+                    <div class="blog-meta">
+                      <p class="blog-category">Design</p>
+
+                      <span class="dot"></span>
+
+                      <time datetime="2022-02-23">Fab 23, 2022</time>
+                    </div>
+
+                    <h3 class="h3 blog-item-title">
+                      The forgotten art of spacing
+                    </h3>
+
+                    <p class="blog-text">
+                      Maxime placeat, sed do eiusmod tempor incididunt ut labore
+                      et dolore magna aliqua.
+                    </p>
+                  </div>
+                </a>
+              </li>
+
+              <li class="blog-post-item">
+                <a href="#">
+                  <figure class="blog-banner-box">
+                    <img
+                      src="./assets/images/blog-6.jpg"
+                      alt="Design digest #79"
+                      loading="lazy"
+                    />
+                  </figure>
+
+                  <div class="blog-content">
+                    <div class="blog-meta">
+                      <p class="blog-category">Design</p>
+
+                      <span class="dot"></span>
+
+                      <time datetime="2022-02-23">Fab 23, 2022</time>
+                    </div>
+
+                    <h3 class="h3 blog-item-title">Design digest #79</h3>
+
+                    <p class="blog-text">
+                      Optio cumque nihil impedit uo minus quod maxime placeat,
+                      velit esse cillum.
+                    </p>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </section>
+        </article> -->
+
+        <!--
+        - #CONTACT
+      -->
+
+        <article class="contact" data-page="contact">
+          <header>
+            <h2 class="h2 article-title">Contact</h2>
+          </header>
+
+          <section class="mapbox" data-mapbox>
+            <figure>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d423284.04417705507!2d-118.74138961424345!3d34.02060845373814!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c75ddc27da13%3A0xe22fdf6f254608f4!2sLos%20Angeles%2C%20CA!5e0!3m2!1sen!2sus!4v1695002414767!5m2!1sen!2sus"
+                width="400"
+                height="300"
+                loading="lazy"
+              ></iframe>
+            </figure>
+          </section>
+
+          <section class="contact-form">
+            <h3 class="h3 form-title">Contact Form</h3>
+
+            <form
+              action="mailto:hlnu@usc.edu"
+              method="post"
+              enctype="text/plain"
+              class="form"
+              data-form
+            >
+              <div class="input-wrapper">
+                <input
+                  type="text"
+                  name="fullname"
+                  class="form-input"
+                  placeholder="Full name"
+                  required
+                  data-form-input
+                />
+
+                <input
+                  type="email"
+                  name="email"
+                  class="form-input"
+                  placeholder="Email address"
+                  required
+                  data-form-input
+                />
+              </div>
+
+              <textarea
+                name="message"
+                class="form-input"
+                placeholder="Your Message"
+                required
+                data-form-input
+              ></textarea>
+
+              <button class="form-btn" type="submit" disabled data-form-btn>
+                <ion-icon name="paper-plane"></ion-icon>
+                <span>Send Message</span>
+              </button>
+            </form>
+          </section>
+        </article>
       </div>
+    </main>
 
-      <!-- Footer -->
-      <footer id="footer">
+    <!--
+    - custom js link
+  -->
+    <script src="./assets/js/script.js"></script>
 
-        <section class="split contact">
-          <section class="alt">
-            <h3>Address</h3>
-            <p>
-              Los Angeles, California - 90007
-              
-            </p>
-          </section>
-          <section>
-            <h3>Phone</h3>
-            <p>(213) 512-9553</p>
-          </section>
-          <section>
-            <h3>Email</h3>
-            <p><a href="mailto:harshithjain.4098@gmail.com" target="_blank">harshithjain.4098@gmail.com</a></p>
-          </section>
-          <section>
-            <h3>Resume</h3>
-            <p><a id="resumeLink" href="/assets/documents/HarshitKumarJain_Jain_Resume.pdf" target="_blank">Hire me!</a></p>
-          </section>
-          <section>
-            <h3>Social</h3>
-            <ul class="icons alt">
-              <li>
-                <a href="https://www.linkedin.com/in/harshitkumarjain/" target="_blank" class="icon brands alt fa-linkedin"
-                  ><span class="label">LinkedIn</span></a
-                >
-              </li>
-              <li>
-                <a href="https://instagram.com/harrshithjain?igshid=OGQ5ZDc2ODk2ZA==" target="_blank" class="icon brands alt fa-instagram"
-                  ><span class="label">Instagram</span></a
-                >
-              </li>
-              <li>
-                <a href="https://github.com/constharshit" target="_blank" class="icon brands alt fa-github"
-                  ><span class="label">GitHub</span></a
-                >
-              </li>
-            </ul>
-          </section>
-        </section>
-      </footer>
-
-      <!-- Copyright -->
-      <div id="copyright">
-        <ul>
-          <li>&copy; Harshit Kumar Jain</li>
-          
-
-          
-        </ul>
-      </div>
-    </div>
-
-    <!-- Scripts -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/jquery.scrollex.min.js"></script>
-    <script src="assets/js/jquery.scrolly.min.js"></script>
-    <script src="assets/js/browser.min.js"></script>
-    <script src="assets/js/breakpoints.min.js"></script>
-    <script src="assets/js/util.js"></script>
-    <script src="assets/js/main.js"></script>
+    <!--
+    - ionicon link
+  -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
   </body>
 </html>
