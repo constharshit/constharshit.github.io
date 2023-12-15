@@ -939,6 +939,13 @@ main {
   margin-bottom: 10px;
 }
 
+.img-list {
+  display: grid;
+  gap: 30px;
+  margin-bottom: 10px;
+  grid-template-columns: 1fr 1fr;
+}
+
 .project-item { display: none; }
 
 .project-item.active {

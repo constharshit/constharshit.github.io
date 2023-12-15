@@ -54,7 +54,7 @@
           <div class="info-content">
             <h1 class="name" title="Harshit Kumar Jain">Harshit Kumar Jain</h1>
 
-            <p class="title">Computer Science Honors at USC</p>
+            <p class="title">CS Honors | University of Southern California</p>
           </div>
 
           <button class="info_more-btn" data-sidebar-btn>
@@ -96,7 +96,7 @@
               </div>
             </li>
 
-            <li class="contact-item">
+            <!-- <li class="contact-item">
               <div class="icon-box">
                 <ion-icon name="calendar-outline"></ion-icon>
               </div>
@@ -106,7 +106,7 @@
 
                 <time datetime="1995-09-20">September 20, 1995</time>
               </div>
-            </li>
+            </li> -->
 
             <li class="contact-item">
               <div class="icon-box">
@@ -169,7 +169,7 @@
         <nav class="navbar">
           <ul class="navbar-list">
             <li class="navbar-item">
-              <button class="navbar-link active" data-nav-link>About</button>
+              <button class="navbar-link" data-nav-link>About</button>
             </li>
 
             <li class="navbar-item">
@@ -180,9 +180,9 @@
               <button class="navbar-link" data-nav-link>Portfolio</button>
             </li>
 
-            <!-- <li class="navbar-item">
-              <button class="navbar-link" data-nav-link>Blog</button>
-            </li> -->
+            <li class="navbar-item">
+              <button class="navbar-link active" data-nav-link>Blog</button>
+            </li>
 
             <li class="navbar-item">
               <button class="navbar-link" data-nav-link>Contact</button>
@@ -194,7 +194,7 @@
         - #ABOUT
       -->
 
-        <article class="about active" data-page="about">
+        <article class="about" data-page="about">
           <header>
             <h2 class="h2 article-title">About me</h2>
           </header>
@@ -1122,15 +1122,241 @@
         - #BLOG
       -->
 
-        <!-- <article class="blog" data-page="blog">
+        <article class="blog active" data-page="blog">
           <header>
             <h2 class="h2 article-title">Blog</h2>
           </header>
+          <section class="timeline">
+            <div class="title-wrapper">
+              <div class="icon-box">
+                <ion-icon name="newspaper-outline"></ion-icon>
+              </div>
+              <h3 class="h3" style="text-transform: none">
+                CSS text-wrap: balance;
+              </h3>
+            </div>
 
-          <section class="blog-posts">
+            <ol class="timeline-list">
+              <li class="timeline-item">
+                <h4 class="h4 timeline-item-title">
+                  What problem does it solve ?
+                </h4>
+
+                <p class="timeline-text" style="text-align: justify">
+                  Developers need not worry about the line breaks anymore.
+                  text-wrap: balance draws its roots from the classic typography
+                  technique of hand-authoring line breaks for balanced text
+                  blocks. This property enables the browser to automatically
+                  balance the wrapped text once the
+                  <b>text-wrap: balance </b>property is set on it or the parent
+                  div without affecting the element's width. The only catch is
+                  that it works only for six or fewer lines, as the text needs
+                  to wrap and, therefore, should have a maximum line length
+                  applied from somewhere. It is inheritable.
+                  <b
+                    >It was mainly created for headlines, block quotes, and
+                    other display texts.</b
+                  >
+                </p>
+                <br />
+                <p>
+                  <img
+                    src="assets/images/blogImages/intro.png"
+                    alt="Image 2"
+                    class="project-img"
+                  />
+                </p>
+              </li>
+
+              <li class="timeline-item">
+                <h4 class="h4 timeline-item-title">
+                  How does it solve this problem ?
+                </h4>
+
+                <p class="timeline-text" style="text-align: justify">
+                  The browser effectively performs a binary search for the
+                  smallest width , stopping at one CSS pixel. This does not
+                  create any additional lines. This is further optimized as the
+                  browser starts with 80% of the average line width.
+                </p>
+              </li>
+
+              <li class="timeline-item">
+                <h4 class="h4 timeline-item-title">At what cost ?</h4>
+
+                <p class="timeline-text" style="text-align: justify">
+                  The browser needs to loop over iterations for getting the best
+                  balanced result. This overhead is kept under control by the
+                  six lines and under rule i.e., the browser implements this
+                  property only if there are less than 6 lines. It is generally
+                  recommended as a best practice to use this property for 4
+                  lines or fewer to prevent the slow rendering of the page.
+                </p>
+              </li>
+
+              <!-- done until here -->
+              <li class="timeline-item">
+                <h4 class="h4 timeline-item-title">Things to look out for :</h4>
+
+                <p class="timeline-text" style="text-align: justify">
+                  Interactions with the white-space property This behavior of
+                  text-wrap:balance may interfere with other properties like
+                  white-space whose motto is to prevent wrapping. That is the
+                  reason we need to unset the white-space property so that our
+                  results are as desired.
+                </p>
+                <br />
+                <p class="img-list">
+                  <img
+                    src="assets/images/blogImages/white-space.png"
+                    alt="Image 2"
+                    class="project-img"
+                  />
+                </p>
+              </li>
+
+              <li class="timeline-item">
+                <p class="timeline-text" style="text-align: justify">
+                  Set the property on specific elements. Make sure you set this
+                  property on the elements you intend to.
+                </p>
+                <br />
+                <p class="img-list">
+                  <img
+                    src="assets/images/blogImages/goodPractice.png"
+                    alt="Image 2"
+                    class="project-img"
+                  />
+                </p>
+              </li>
+
+              <li class="timeline-item">
+                <p class="timeline-text" style="text-align: justify">
+                  Setting it like this will likely slow down the render speed of
+                  the page.
+                </p>
+                <br />
+                <p class="img-list">
+                  <img
+                    src="assets/images/blogImages/badPractice.png"
+                    alt="Image 2"
+                    class="project-img"
+                  />
+                </p>
+              </li>
+
+              <li class="timeline-item">
+                <h4 class="h4 timeline-item-title">Use cases ?</h4>
+
+                <p class="timeline-text" style="text-align: justify">
+                  Balancing headlines ( Most Common )
+                </p>
+                <br />
+                <figure>
+                  <img
+                    src="assets/images/blogImages/h1Balanced.gif"
+                    alt="Image 2"
+                    class="project-img"
+                  />
+                </figure>
+                <figure>
+                  <img
+                    src="assets/images/blogImages/headlineHTML.png"
+                    alt="Image 2"
+                    class="project-img"
+                  />
+                </figure>
+              </li>
+              <li class="timeline-item">
+                <p class="timeline-text" style="text-align: justify">
+                  This does not work as it has more than 6 lines.
+                </p>
+                <br />
+                <figure>
+                  <img
+                    src="assets/images/blogImages/pMoreThan6.gif"
+                    alt="Image 2"
+                    class="project-img"
+                  />
+                </figure>
+              </li>
+              <li class="timeline-item">
+                <p class="timeline-text" style="text-align: justify">
+                  This works because it is less than six lines.
+                </p>
+                <br />
+                <figure>
+                  <img
+                    src="assets/images/blogImages/pLessThan6.gif"
+                    alt="Image 2"
+                    class="project-img"
+                  />
+                </figure>
+                <figure>
+                  <img
+                    src="assets/images/blogImages/lessTha6HTML.png"
+                    alt="Image 2"
+                    class="project-img"
+                  />
+                </figure>
+              </li>
+              <li class="timeline-item">
+                <p class="timeline-text" style="text-align: justify">
+                  <b>Card Title:</b> This is a common pattern where you might
+                  spot a list of articles with different titles.
+                </p>
+                <br />
+                <figure>
+                  <img
+                    src="assets/images/blogImages/card.gif"
+                    alt="Image 2"
+                    class="project-img"
+                  />
+                </figure>
+                <figure>
+                  <img
+                    src="assets/images/blogImages/cardHTML.png"
+                    alt="Image 2"
+                    class="project-img"
+                  />
+                </figure>
+              </li>
+              <li class="timeline-item">
+                <figure>
+                  <img
+                    src="assets/images/blogImages/tooltip.png"
+                    alt="Image 2"
+                    class="project-img"
+                  />
+                </figure>
+              </li>
+              <li class="timeline-item">
+                <figure>
+                  <img
+                    src="assets/images/blogImages/modal.png"
+                    alt="Image 2"
+                    class="project-img"
+                  />
+                </figure>
+              </li>
+              <li class="timeline-item">
+                <figure>
+                  <img
+                    src="assets/images/blogImages/takeaways.png"
+                    alt="Image 2"
+                    class="project-img"
+                  />
+                </figure>
+              </li>
+            </ol>
+          </section>
+          <!-- <section class="blog-posts">
             <ul class="blog-posts-list">
               <li class="blog-post-item">
-                <a href="https://dailytrojan.com/2012/04/11/club-tennis-team-making-as-much-noise-as-varsity/" target="_blank">
+                <a
+                  href="https://dailytrojan.com/2012/04/11/club-tennis-team-making-as-much-noise-as-varsity/"
+                  target="_blank"
+                >
                   <figure class="blog-banner-box">
                     <img
                       src="./assets/images/troja.jpeg"
@@ -1141,178 +1367,25 @@
 
                   <div class="blog-content">
                     <div class="blog-meta">
-                      <p class="blog-category">Design</p>
+                      <p class="blog-category">Tennis</p>
 
                       <span class="dot"></span>
 
-                      <time datetime="2022-02-23">Fab 23, 2022</time>
+                      <time datetime="2022-02-23">December 14, 2023</time>
                     </div>
 
-                    <h3 class="h3 blog-item-title">
-                      Design conferences in 2022
-                    </h3>
+                    <h3 class="h3 blog-item-title">Trojan Tennis Club</h3>
 
                     <p class="blog-text">
-                      Veritatis et quasi architecto beatae vitae dicta sunt,
-                      explicabo.
-                    </p>
-                  </div>
-                </a>
-              </li>
-
-              <li class="blog-post-item">
-                <a href="#">
-                  <figure class="blog-banner-box">
-                    <img
-                      src="./assets/images/blog-2.jpg"
-                      alt="Best fonts every designer"
-                      loading="lazy"
-                    />
-                  </figure>
-
-                  <div class="blog-content">
-                    <div class="blog-meta">
-                      <p class="blog-category">Design</p>
-
-                      <span class="dot"></span>
-
-                      <time datetime="2022-02-23">Fab 23, 2022</time>
-                    </div>
-
-                    <h3 class="h3 blog-item-title">
-                      Best fonts every designer
-                    </h3>
-
-                    <p class="blog-text">
-                      Sed ut perspiciatis, nam libero tempore, cum soluta nobis
-                      est eligendi.
-                    </p>
-                  </div>
-                </a>
-              </li>
-
-              <li class="blog-post-item">
-                <a href="#">
-                  <figure class="blog-banner-box">
-                    <img
-                      src="./assets/images/blog-3.jpg"
-                      alt="Design digest #80"
-                      loading="lazy"
-                    />
-                  </figure>
-
-                  <div class="blog-content">
-                    <div class="blog-meta">
-                      <p class="blog-category">Design</p>
-
-                      <span class="dot"></span>
-
-                      <time datetime="2022-02-23">Fab 23, 2022</time>
-                    </div>
-
-                    <h3 class="h3 blog-item-title">Design digest #80</h3>
-
-                    <p class="blog-text">
-                      Excepteur sint occaecat cupidatat no proident, quis
-                      nostrum exercitationem ullam corporis suscipit.
-                    </p>
-                  </div>
-                </a>
-              </li>
-
-              <li class="blog-post-item">
-                <a href="#">
-                  <figure class="blog-banner-box">
-                    <img
-                      src="./assets/images/blog-4.jpg"
-                      alt="UI interactions of the week"
-                      loading="lazy"
-                    />
-                  </figure>
-
-                  <div class="blog-content">
-                    <div class="blog-meta">
-                      <p class="blog-category">Design</p>
-
-                      <span class="dot"></span>
-
-                      <time datetime="2022-02-23">Fab 23, 2022</time>
-                    </div>
-
-                    <h3 class="h3 blog-item-title">
-                      UI interactions of the week
-                    </h3>
-
-                    <p class="blog-text">
-                      Enim ad minim veniam, consectetur adipiscing elit, quis
-                      nostrud exercitation ullamco laboris nisi.
-                    </p>
-                  </div>
-                </a>
-              </li>
-
-              <li class="blog-post-item">
-                <a href="#">
-                  <figure class="blog-banner-box">
-                    <img
-                      src="./assets/images/blog-5.jpg"
-                      alt="The forgotten art of spacing"
-                      loading="lazy"
-                    />
-                  </figure>
-
-                  <div class="blog-content">
-                    <div class="blog-meta">
-                      <p class="blog-category">Design</p>
-
-                      <span class="dot"></span>
-
-                      <time datetime="2022-02-23">Fab 23, 2022</time>
-                    </div>
-
-                    <h3 class="h3 blog-item-title">
-                      The forgotten art of spacing
-                    </h3>
-
-                    <p class="blog-text">
-                      Maxime placeat, sed do eiusmod tempor incididunt ut labore
-                      et dolore magna aliqua.
-                    </p>
-                  </div>
-                </a>
-              </li>
-
-              <li class="blog-post-item">
-                <a href="#">
-                  <figure class="blog-banner-box">
-                    <img
-                      src="./assets/images/blog-6.jpg"
-                      alt="Design digest #79"
-                      loading="lazy"
-                    />
-                  </figure>
-
-                  <div class="blog-content">
-                    <div class="blog-meta">
-                      <p class="blog-category">Design</p>
-
-                      <span class="dot"></span>
-
-                      <time datetime="2022-02-23">Fab 23, 2022</time>
-                    </div>
-
-                    <h3 class="h3 blog-item-title">Design digest #79</h3>
-
-                    <p class="blog-text">
-                      Optio cumque nihil impedit uo minus quod maxime placeat,
-                      velit esse cillum.
+                      The Club Tennis team at University of Southern Califronia
+                      representing USC at the Club Level.
                     </p>
                   </div>
                 </a>
               </li>
             </ul>
-          </section>
-        </article> -->
+          </section> -->
+        </article>
 
         <!--
         - #CONTACT
@@ -1390,6 +1463,7 @@
     <!--
     - ionicon link
   -->
+
     <script
       type="module"
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
