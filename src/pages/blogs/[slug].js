@@ -35,10 +35,10 @@ const blogData = {
           users.
         </p>
 
-        <h2 className="font-semibold text-xl lg:text-md w-full mt-2">
+        <h2 className="font-semibold text-xl lg:text-md w-full mt-2 mb-2">
           Accessibility Starts with the Right Mindset
         </h2>
-        <p>
+        <p className="mb-1">
           Accessibility isn&apos;t just about testing at the end of development.
           It needs to be woven into the entire process from the start. Too
           often, accessibility is treated as an afterthought—something bolted on
@@ -55,7 +55,7 @@ const blogData = {
           helps us build components that serve everyone better.
         </p>
 
-        <h2 className="font-semibold text-xl lg:text-md w-full mt-2">
+        <h2 className="font-semibold text-xl lg:text-md w-full mt-2 mb-2">
           Tools and Resources for Accessibility
         </h2>
         <p>
@@ -68,7 +68,7 @@ const blogData = {
           accessibility depending on their project&apos;s needs.
         </p>
 
-        <h2 className="font-semibold text-xl lg:text-md w-full mt-2">
+        <h2 className="font-semibold text-xl lg:text-md w-full mt-2 mb-2">
           ARIA: Use with Care
         </h2>
         <p>
@@ -83,7 +83,7 @@ const blogData = {
           vital to strike a balance.
         </p>
 
-        <h2 className="font-semibold text-xl lg:text-md w-full mt-2">
+        <h2 className="font-semibold text-xl lg:text-md w-full mt-2 mb-2">
           Accessibility as a Natural Practice
         </h2>
         <p>
@@ -96,7 +96,7 @@ const blogData = {
           for everyone.
         </p>
 
-        <p className="mt-2">
+        <p className="mt-2 mb-1">
           <strong>Acknowledgment</strong>
         </p>
         <p>
