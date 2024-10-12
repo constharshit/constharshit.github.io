@@ -4,7 +4,6 @@ import React from "react";
 import Head from "next/head";
 import AnimatedText from "@/components/AnimatedText";
 import Layout from "@/components/Layout";
-import { FeaturedProject } from ".";
 
 // Blog post data with JSX content
 const blogData = {
@@ -121,8 +120,11 @@ const blogData = {
 const BlogPost = () => {
   const router = useRouter();
   const { slug } = router.query;
-
   const blog = blogData[slug];
+  // If fallback is true, this will show a loading state while the static page is being generated
+  if (router.isFallback) {
+    return <div>Loading...</div>;
+  }
 
   if (!blog) {
     return <div>Blog not found</div>;
@@ -141,7 +143,6 @@ const BlogPost = () => {
         <Layout className="pt-16">
           <div className="grid grid-cols-12 gap-24 gap-y-32 xl:gap-x-16 lg:gap-x-8 md:gap-y-24 sm:gap-x-0">
             <div className="col-span-12">
-              {/* Render JSX content directly */}
               <article
                 className="w-full flex items-center justify-between relative rounded-br-2xl rounded-3xl border border-solid
      border-dark bg-light shadow-2xl p-12 dark:bg-dark dark:border-light lg:flex-col lg:p-8 xs:rounded-2xl xs:rounded-br-3xl xs:p-4"
@@ -161,5 +162,31 @@ const BlogPost = () => {
     </>
   );
 };
+
+// Use getStaticPaths to tell Next.js which pages to generate at build time
+export async function getStaticPaths() {
+  // Generate paths for all blog posts
+  const paths = Object.keys(blogData).map((slug) => ({
+    params: { slug },
+  }));
+
+  return {
+    paths,
+    fallback: false, // Only allow pre-defined paths, others will return 404
+  };
+}
+
+// Use getStaticProps but avoid returning the content as a prop
+export async function getStaticProps({ params }) {
+  // Since the content is already in the component, just pass the slug
+  const { slug } = params;
+
+  // Return the slug so it can be used in the component to select the blog post
+  return {
+    props: {
+      slug,
+    },
+  };
+}
 
 export default BlogPost;
