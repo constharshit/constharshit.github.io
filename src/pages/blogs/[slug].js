@@ -8,7 +8,7 @@ import Layout from "@/components/Layout";
 // Blog post data with JSX content
 const blogData = {
   "web-for-all": {
-    title: "Best Practices for Web Accessibility",
+    title: "Web for All",
     content: (
       <div className="text-justify">
         <p>
@@ -136,7 +136,7 @@ const BlogPost = () => {
         <title>{blog.title}</title>
         <meta
           name="description"
-          content={`This page is a ${blog.title} written by Harshit Kumar Jain`}
+          content={`${blog.title} written by Harshit Kumar Jain`}
         />
       </Head>
       <main className="w-full mb-16 flex flex-col items-center justify-center dark:text-light">
