@@ -33,7 +33,7 @@ border-dark bg-light shadow-2xl p-12 dark:bg-dark dark:border-light  lg:p-8 xs:r
               className="mb-16 lg:!text-7xl sm:!text-6xl xs:!text-4xl sm:mb-8"
             />
             <div className="grid w-full grid-cols-8 gap-16 sm:gap-8">
-              <div className="col-span-5 relative flex flex-col items-start justify-start xl:col-span-4 md:order-2 md:col-span-8">
+              <div className="col-span-12 relative flex flex-col items-start justify-start xl:col-span-4 md:order-2 md:col-span-8">
                 <ParticlesContainer />
 
                 <p className="font-medium text-justify">
@@ -59,7 +59,7 @@ border-dark bg-light shadow-2xl p-12 dark:bg-dark dark:border-light  lg:p-8 xs:r
                   engineering career.
                 </p>
               </div>
-              <div
+              {/* <div
                 className="col-span-3 relative h-max  bg-light p-8 dark:bg-dark dark:border-light
             xl:col-span-4 md:order-1 md:col-span-8"
               >
@@ -70,7 +70,7 @@ border-dark bg-light shadow-2xl p-12 dark:bg-dark dark:border-light  lg:p-8 xs:r
                   priority
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
-              </div>
+              </div> */}
             </div>
           </div>
 

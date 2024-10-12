@@ -57,7 +57,7 @@ const Experience = () => {
             position="Head Teaching Assistant"
             company="USC - Viterbi"
             companyLink="www.usc.edu"
-            time="August 2023 - Present"
+            time="August 2023 - August 2024"
             address="Los Angeles, CA"
             work="Guiding a class of 310 students, in developing large-scale,
             graphical Java applications encompassing concurrency,

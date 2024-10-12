@@ -14,7 +14,7 @@ export default function Home() {
         <title>Harsh Portfolio</title>
         <meta name="description" content="A portfolio describing my projects" />
       </Head>
-      <main className="flex items-center text-dark w-full min-h-screen dark:text-light ">
+      <main className="flex items-center text-dark w-full dark:text-light ">
         <Layout className="pt-0 md:pt-16 sm:pt-8">
           <div
             className="flex items-center justify-between w-full lg:flex-col rounded-br-2xl rounded-3xl border border-solid

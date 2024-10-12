@@ -15,12 +15,19 @@ import useThemeSwitch from "./hooks/useThemeSwitch";
 
 const CustomLink = ({ href, title, className = "" }) => {
   const router = useRouter();
+  const isHomePage = href === "/" && router.asPath === "/";
+  const isActive =
+    isHomePage || (href !== "/" && router.asPath.startsWith(href));
   return (
-    <Link name="link-button" href={href} className={`${className} relative group`}>
+    <Link
+      name="link-button"
+      href={href}
+      className={`${className} relative group`}
+    >
       {title}
       <span
         className={`h-[1px] inline-block bg-dark absolute left-0 -bottom-0.5 group-hover:w-full transition-[width] ease duration-300 ${
-          router.asPath === href ? "w-full" : "w-0"
+          isActive ? "w-full" : "w-0"
         } dark:bg-light`}
       >
         &nbsp;
@@ -35,6 +42,9 @@ const CustomMobileLink = ({ href, title, className = "", toggle }) => {
     toggle();
     router.push(href);
   };
+  const isHomePage = href === "/" && router.asPath === "/";
+  const isActive =
+    isHomePage || (href !== "/" && router.asPath.startsWith(href));
   return (
     <button
       name="nav-mobile-button"
@@ -45,7 +55,7 @@ const CustomMobileLink = ({ href, title, className = "", toggle }) => {
       {title}
       <span
         className={`h-[1px] inline-block bg-light absolute left-0 -bottom-0.5 group-hover:w-full transition-[width] ease duration-300 ${
-          router.asPath === href ? "w-full" : "w-0"
+          isActive ? "w-full" : "w-0"
         } dark:bg-dark`}
       >
         &nbsp;
@@ -89,6 +99,7 @@ const NavBar = () => {
           <CustomLink href="/" title="Home" className="mr-4" />
           <CustomLink href="/about" title="About" className="mx-4" />
           <CustomLink href="/projects" title="Projects" className="mx-4" />
+          <CustomLink href="/blogs" title="Blogs" className="mx-4" />
           <CustomLink href="/contact" title="Contact" className="ml-4" />
         </nav>
         <nav className="flex items-center justify-center flex-wrap">
@@ -149,6 +160,12 @@ const NavBar = () => {
             <CustomMobileLink
               href="/projects"
               title="Projects"
+              className=""
+              toggle={handleClick}
+            />
+            <CustomMobileLink
+              href="/blogs"
+              title="Blogs"
               className=""
               toggle={handleClick}
             />

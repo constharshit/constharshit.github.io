@@ -14,7 +14,7 @@ const contact = () => {
           content="This page is to contact Harshit Kumar Jain"
         />
       </Head>
-      <main className="flex items-center text-dark w-full min-h-screen justify-center dark:text-light">
+      <main className="flex items-center text-dark w-full justify-center dark:text-light">
         <Layout className="pt-16">
           <article
             className="w-full flex flex-col items-center justify-between relative rounded-br-2xl rounded-3xl border border-solid
