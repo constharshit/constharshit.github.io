@@ -13,7 +13,7 @@ TEL;TYPE=cell,voice:(987) 654-3210
 TEL;TYPE=fax:(111) 222-3333
 URL;TYPE=work:https://example.com
 URL;TYPE=LinkedIn:https://linkedin.com/in/johndoe
-PHOTO;VALUE=URI:https://example.com/johndoe.jpg
+PHOTO;VALUE=URI:https://placehold.co/600x400.png
 BDAY:1985-06-15
 GENDER:M
 ANNIVERSARY:2010-09-20
