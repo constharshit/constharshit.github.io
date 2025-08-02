@@ -1,0 +1,29 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Doe;John;Quincy;Mr.;Jr.
+FN:Mr. John Quincy Doe Jr.
+NICKNAME:Johnny
+ORG:Example Corporation;Sales Division
+TITLE:Senior Account Manager
+ROLE:Project Lead
+EMAIL;TYPE=work:john.doe@example.com
+EMAIL;TYPE=home:johnny.doe@gmail.com
+TEL;TYPE=work,voice:(123) 456-7890
+TEL;TYPE=cell,voice:(987) 654-3210
+TEL;TYPE=fax:(111) 222-3333
+URL;TYPE=work:https://example.com
+URL;TYPE=LinkedIn:https://linkedin.com/in/johndoe
+PHOTO;VALUE=URI:https://example.com/johndoe.jpg
+BDAY:1985-06-15
+GENDER:M
+ANNIVERSARY:2010-09-20
+ADR;TYPE=work:;;123 Main Street;Metropolis;NY;10001;USA
+ADR;TYPE=home:;;456 Side St;Smalltown;CA;90001;USA
+LABEL;TYPE=work:123 Main Street\nMetropolis, NY 10001\nUSA
+LABEL;TYPE=home:456 Side St\nSmalltown, CA 90001\nUSA
+IMPP;TYPE=Skype:skype:johnny.doe?call
+IMPP;TYPE=WhatsApp:waid:1234567890
+NOTE:This is a sample vCard with all fields filled.
+CATEGORIES:Friend,Colleague
+REV:20250802T080000Z
+END:VCARD
